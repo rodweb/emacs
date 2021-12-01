@@ -1,3 +1,7 @@
+(setq straight-use-package-by-default t)
+(setq straight-default-vc 'git)
+(setq straight-vc-git-default-protocol 'ssh)
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -10,5 +14,7 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+
+(straight-use-package 'use-package)
 
 (provide 'rod-bootstrap)
