@@ -6,3 +6,4 @@
 (require 'rod-bootstrap)
 (require 'rod-env)
 (require 'rod-session)
+(require 'rod-git)
