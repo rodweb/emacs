@@ -11,4 +11,11 @@
       (open-line 2)
       (switch-to-buffer buffer))))
 
+(use-package files
+  :straight nil
+  :custom
+  (confirm-kill-emacs #'y-or-n-p)
+  :config
+  (defalias 'yes-or-no-p #'y-or-n-p))
+
 (provide 'rod-qol)
