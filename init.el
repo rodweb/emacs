@@ -11,3 +11,4 @@
 (require 'rod-backup)
 (require 'rod-dired)
 (require 'rod-minibuffer)
+(require 'rod-completion)
