@@ -9,3 +9,4 @@
 (require 'rod-git)
 (require 'rod-qol)
 (require 'rod-backup)
+(require 'rod-dired)
