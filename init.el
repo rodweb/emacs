@@ -8,3 +8,4 @@
 (require 'rod-session)
 (require 'rod-git)
 (require 'rod-qol)
+(require 'rod-backup)
