@@ -33,4 +33,19 @@
   :custom
   (prefix-help-command #'embark-prefix-help-command))
 
+(use-package consult
+  :defer t
+  :bind
+  (([remap switch-to-buffer] . consult-buffer)
+   ([remap goto-line] . consult-goto-line))
+  :custom
+  (xref-show-xrefs-function #'consult-xref)
+  (xref-show-definitions-function #'consult-xref)
+  :config
+  (consult-customize
+   consult-buffer :preview-key nil))
+
+(use-package embark-consult
+  :after consult)
+
 (provide 'rod-minibuffer)
