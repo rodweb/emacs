@@ -25,4 +25,12 @@
   :config
   (marginalia-mode))
 
+(use-package embark
+  :after vertico
+  :bind
+  (("M-<return>" . embark-act)
+   ("C-h b" . embark-bindings))
+  :custom
+  (prefix-help-command #'embark-prefix-help-command))
+
 (provide 'rod-minibuffer)
