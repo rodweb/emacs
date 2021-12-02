@@ -17,4 +17,12 @@
   :hook
   (minibuffer-setup . rod/use-orderless-in-minibuffer))
 
+(use-package marginalia
+  :after vertico
+  :bind
+  (:map minibuffer-local-map
+	("M-S-<return>" . marginalia-cycle))
+  :config
+  (marginalia-mode))
+
 (provide 'rod-minibuffer)
