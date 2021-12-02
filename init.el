@@ -10,3 +10,4 @@
 (require 'rod-qol)
 (require 'rod-backup)
 (require 'rod-dired)
+(require 'rod-minibuffer)
