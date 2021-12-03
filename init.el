@@ -12,3 +12,4 @@
 (require 'rod-dired)
 (require 'rod-minibuffer)
 (require 'rod-completion)
+(require 'rod-workspace)
