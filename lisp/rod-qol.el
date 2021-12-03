@@ -15,6 +15,7 @@
       (open-line 2)
       (write-region nil nil filename)
       (set-buffer-modified-p nil)
+      (set-visited-file-name (expand-file-name filename))
       (switch-to-buffer buffer))))
 
 (use-package files
