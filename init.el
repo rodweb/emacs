@@ -17,3 +17,4 @@
 (require 'rod-js)
 (require 'rod-ts)
 (require 'rod-project)
+(require 'rod-md)
