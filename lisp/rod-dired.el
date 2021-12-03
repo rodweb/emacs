@@ -8,4 +8,12 @@
 	 (dired-mode . dired-omit-mode)
 	 (dired-mode . diff-hl-dired-mode)))
 
+(use-package dired-hide-dotfiles
+  :after dired
+  :bind
+  (:map dired-mode-map
+	("." . dired-hide-dotfiles-mode))
+  :config
+  (dired-hide-dotfiles-mode))
+
 (provide 'rod-dired)
