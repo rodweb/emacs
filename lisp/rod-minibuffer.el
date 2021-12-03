@@ -2,6 +2,9 @@
   :defer 0.1
   :custom
   (vertico-cycle t)
+  :bind
+  (:map minibuffer-local-map
+	("<escape>" . abort-minibuffers))
   :config
   (vertico-mode))
 
