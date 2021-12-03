@@ -15,3 +15,4 @@
 (require 'rod-workspace)
 (require 'rod-search)
 (require 'rod-js)
+(require 'rod-ts)
