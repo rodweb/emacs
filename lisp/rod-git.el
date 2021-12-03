@@ -1,4 +1,6 @@
 (use-package magit
+  :custom
+  (vc-follow-symlinks t)
   :commands (magit-status))
 
 (use-package diff-hl
