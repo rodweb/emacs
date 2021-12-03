@@ -48,4 +48,9 @@
 (use-package embark-consult
   :after consult)
 
+(use-package savehist
+  :straight nil
+  :config
+  (savehist-mode))
+
 (provide 'rod-minibuffer)
