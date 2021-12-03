@@ -14,3 +14,4 @@
 (require 'rod-completion)
 (require 'rod-workspace)
 (require 'rod-search)
+(require 'rod-js)
