@@ -13,3 +13,4 @@
 (require 'rod-minibuffer)
 (require 'rod-completion)
 (require 'rod-workspace)
+(require 'rod-search)
