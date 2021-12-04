@@ -4,6 +4,7 @@
 
 (require 'rod-ui)
 (require 'rod-bootstrap)
+(require 'rod-performance)
 (require 'rod-env)
 (require 'rod-session)
 (require 'rod-git)
