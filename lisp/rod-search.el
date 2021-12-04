@@ -1,7 +1,8 @@
 (use-package rg
   :defer 1
   :config
-  (rg-enable-default-bindings))
+  (rg-enable-default-bindings)
+  (add-to-list 'rg-required-command-line-flags "--max-columns=2000"))
 
 (rg-define-search rg-no-tests
   :format regexp
