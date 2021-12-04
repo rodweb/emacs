@@ -23,3 +23,4 @@
 (require 'rod-lsp)
 (require 'rod-service)
 (require 'rod-command)
+(require 'rod-org)
