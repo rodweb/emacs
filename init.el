@@ -20,3 +20,4 @@
 (require 'rod-project)
 (require 'rod-md)
 (require 'rod-programming)
+(require 'rod-profiling)
