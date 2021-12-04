@@ -40,7 +40,8 @@
   :defer t
   :bind
   (([remap switch-to-buffer] . consult-buffer)
-   ([remap goto-line] . consult-goto-line))
+   ([remap goto-line] . consult-goto-line)
+   ("M-g l" . consult-line))
   :custom
   (xref-show-xrefs-function #'consult-xref)
   (xref-show-definitions-function #'consult-xref)
