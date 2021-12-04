@@ -19,3 +19,4 @@
 (require 'rod-md)
 (require 'rod-programming)
 (require 'rod-profiling)
+(require 'rod-diff)
