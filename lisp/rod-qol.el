@@ -1,5 +1,7 @@
 (setq initial-buffer-choice (expand-file-name (concat user-emacs-directory "init.el")))
 
+(add-hook 'after-init-hook #'(lambda () (message "Emacs took %s to load." (emacs-init-time))))
+
 (defun rod/make-module (name)
   "Create a new module at `user-emacs-directory' lisp directory.
    NAME is the module suffix."
