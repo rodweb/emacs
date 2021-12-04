@@ -2,7 +2,7 @@
 
 (require 'rod-ui)
 (require 'rod-bootstrap)
-(require 'rod-performance)
+(require 'rod-perf)
 (require 'rod-env)
 (require 'rod-session)
 (require 'rod-git)
@@ -17,7 +17,7 @@
 (require 'rod-ts)
 (require 'rod-project)
 (require 'rod-md)
-(require 'rod-programming)
+(require 'rod-prog)
 (require 'rod-profiling)
 (require 'rod-diff)
 (require 'rod-lsp)

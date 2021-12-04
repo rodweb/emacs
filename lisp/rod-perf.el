@@ -7,4 +7,4 @@
 
 (global-so-long-mode 1)
 
-(provide 'rod-performance)
+(provide 'rod-perf)
