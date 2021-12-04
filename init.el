@@ -24,3 +24,4 @@
 (require 'rod-service)
 (require 'rod-command)
 (require 'rod-org)
+(require 'rod-info)
