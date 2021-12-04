@@ -53,6 +53,7 @@
 
 (use-package savehist
   :straight nil
+  :after vertico
   :config
   (savehist-mode))
 
