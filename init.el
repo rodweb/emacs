@@ -25,3 +25,4 @@
 (require 'rod-command)
 (require 'rod-org)
 (require 'rod-info)
+(require 'rod-snippet)
