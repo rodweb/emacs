@@ -21,3 +21,4 @@
 (require 'rod-profiling)
 (require 'rod-diff)
 (require 'rod-lsp)
+(require 'rod-service)
