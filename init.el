@@ -20,3 +20,4 @@
 (require 'rod-programming)
 (require 'rod-profiling)
 (require 'rod-diff)
+(require 'rod-lsp)
