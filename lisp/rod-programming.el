@@ -1,3 +1,9 @@
+(use-package editorconfig
+  :hook
+  (prog-mode . editorconfig-mode)
+  :custom
+  (editorconfig-trim-whitespaces-mode 'ws-butler-mode))
+
 (use-package dumb-jump
   :defer 1
   :config
