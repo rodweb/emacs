@@ -9,6 +9,12 @@
   :config
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
+(use-package quickrun
+  :custom
+  (quickrun-focus-p nil)
+  :bind
+  ("C-c ," . quickrun))
+
 (setq-default indent-tabs-mode nil)
 (setq-default show-trailing-whitespace t)
 
