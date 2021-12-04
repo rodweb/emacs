@@ -22,3 +22,4 @@
 (require 'rod-diff)
 (require 'rod-lsp)
 (require 'rod-service)
+(require 'rod-command)
