@@ -10,6 +10,7 @@
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 (setq-default indent-tabs-mode nil)
+(setq-default show-trailing-whitespace t)
 
 (save-place-mode 1)
 (show-paren-mode 1)
