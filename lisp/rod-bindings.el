@@ -24,6 +24,8 @@
     "e" nil
     "eb" 'eval-buffer
     "ef" 'eval-defun
+    "es" 'eshell
+    "et" 'vterm
     "f" 'projectile-find-file
     "g" 'magit-status
     "h" nil
