@@ -1,6 +1,10 @@
 (use-package gcmh
   :config (gcmh-mode))
 
+(use-package fnhh
+  :straight (:host github :repo "a13/fnhh")
+  :config (fnhh-mode))
+
 ;; disable bidirectional display
 (setq-default bidi-paragraph-direction 'left-to-right
 	      bidi-inhibit-bpa t)
