@@ -9,9 +9,9 @@
   (evil-undo-system 'undo-redo)
   (evil-symbol-word-search t)
   :config
-  (add-hook 'with-editor-mode-hook 'evil-insert-state)
-  (add-hook 'dired-mode-hook 'evil-emacs-state)
-  (add-hook 'help-mode-hook 'evil-emacs-state)
+  (evil-set-initial-state 'git-commit-mode 'insert)
+  (evil-set-initial-state 'dired-mode 'emacs)
+  (evil-set-initial-state 'help-mode 'emacs)
   (evil-mode))
 
 (use-package evil-commentary
