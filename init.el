@@ -27,3 +27,4 @@
 (require 'rod-info)
 (require 'rod-snippet)
 (require 'rod-modeline)
+(require 'rod-evil)
