@@ -26,3 +26,4 @@
 (require 'rod-org)
 (require 'rod-info)
 (require 'rod-snippet)
+(require 'rod-modeline)
