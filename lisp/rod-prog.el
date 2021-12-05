@@ -15,6 +15,9 @@
   :bind
   ("C-c ," . quickrun))
 
+(use-package avy
+  :commands (avy-goto-char-timer))
+
 (add-hook 'after-init-hook
           (lambda ()
             (setq-default indent-tabs-mode nil)

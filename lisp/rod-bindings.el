@@ -28,7 +28,7 @@
     "g" 'magit-status
     "h" nil
     "i" 'consult-imenu
-    "j" nil
+    "j" 'avy-goto-char-timer
     "k" 'kill-this-buffer
     "l" 'consult-line
     "m" 'consult-bookmark
