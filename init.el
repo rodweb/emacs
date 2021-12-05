@@ -30,3 +30,4 @@
 (require 'rod-evil)
 (require 'rod-bindings)
 (require 'rod-term)
+(require 'rod-pass)
