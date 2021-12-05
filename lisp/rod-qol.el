@@ -30,4 +30,7 @@
   :config
   (defalias 'yes-or-no-p #'y-or-n-p))
 
+(use-package restart-emacs
+  :commands restart-emacs)
+
 (provide 'rod-qol)
