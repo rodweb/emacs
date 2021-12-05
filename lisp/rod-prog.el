@@ -1,3 +1,6 @@
+(use-package ws-butler
+  :defer t)
+
 (use-package editorconfig
   :hook
   (prog-mode . editorconfig-mode)
