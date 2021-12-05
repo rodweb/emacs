@@ -3,6 +3,9 @@
   (vc-follow-symlinks t)
   :commands (magit-status))
 
+(use-package forge
+  :after magit)
+
 (use-package diff-hl
   :defer 1
   :hook
