@@ -24,6 +24,7 @@
     "e" nil
     "eb" 'eval-buffer
     "ef" 'eval-defun
+    "er" 'eval-region
     "es" 'eshell
     "et" 'vterm
     "f" 'projectile-find-file

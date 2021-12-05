@@ -21,6 +21,10 @@
 (use-package avy
   :commands (avy-goto-char-timer))
 
+(use-package expand-region
+  :bind
+  ("C-=" . er/expand-region))
+
 (add-hook 'after-init-hook
           (lambda ()
             (setq-default indent-tabs-mode nil)
