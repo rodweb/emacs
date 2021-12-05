@@ -1,9 +1,11 @@
 (use-package dired
   :straight nil
   :commands (dired dired-jump)
+  :init (put 'dired-find-alternate-file 'disabled nil)
   :bind
   (:map dired-mode-map
-	("C-c C-q" . #'wdired-change-to-wdired-mode))
+	("C-c C-q" . #'wdired-change-to-wdired-mode)
+        ("<return>" . #'dired-find-alternate-file))
   :hook ((dired-mode . dired-hide-details-mode)
 	 (dired-mode . dired-omit-mode)
 	 (dired-mode . diff-hl-dired-mode)))
