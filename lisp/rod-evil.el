@@ -8,10 +8,10 @@
   (evil-search-module 'evil-search)
   (evil-undo-system 'undo-redo)
   (evil-symbol-word-search t)
+  (evil-default-state 'emacs)
   :config
   (evil-set-initial-state 'git-commit-mode 'insert)
-  (evil-set-initial-state 'dired-mode 'emacs)
-  (evil-set-initial-state 'help-mode 'emacs)
+  (evil-set-initial-state 'prog-mode 'normal)
   (evil-mode))
 
 (use-package evil-commentary
