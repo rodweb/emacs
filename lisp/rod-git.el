@@ -19,4 +19,9 @@
   :config
   (global-diff-hl-mode 1))
 
+(use-package git-link
+  :defer t
+  :custom
+  (git-link-use-commit t))
+
 (provide 'rod-git)
