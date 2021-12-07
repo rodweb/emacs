@@ -58,4 +58,12 @@
   :config
   (savehist-mode))
 
+(use-package recentf
+  :straight nil
+  :after vertico
+  :config
+  ;; saves every 5 minutes
+  (run-at-time nil (* 5 60) #'recentf-save-list)
+  (recentf-mode))
+
 (provide 'rod-minibuffer)
