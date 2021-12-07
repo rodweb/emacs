@@ -5,6 +5,7 @@
 
 (general-create-definer leader-def
   :prefix "SPC"
+  :non-normal-prefix "M-SPC"
   :states '(normal visual emacs))
 
 (defun rod/alternate-buffer ()

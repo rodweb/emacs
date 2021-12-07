@@ -25,9 +25,12 @@
   :bind
   ("C-=" . er/expand-region))
 
+(defun rod/show-trailing-whitespace-in-prog-mode ()
+  (setq show-trailing-whitespace t))
+(add-hook 'prog-mode-hook #'rod/show-trailing-whitespace-in-prog-mode)
+
 (defun rod/setup-programming-defaults ()
   (setq-default indent-tabs-mode nil)
-  (setq-default show-trailing-whitespace t)
 
   (save-place-mode 1)
   (show-paren-mode 1)
