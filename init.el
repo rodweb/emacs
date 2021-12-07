@@ -31,3 +31,4 @@
 (require 'rod-bindings)
 (require 'rod-term)
 (require 'rod-pass)
+(require 'rod-http)
