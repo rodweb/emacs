@@ -20,4 +20,7 @@
   :after evil
   :config (evil-commentary-mode))
 
+(use-package goto-chg
+  :after evil)
+
 (provide 'rod-evil)
