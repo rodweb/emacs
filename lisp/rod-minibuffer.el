@@ -2,10 +2,12 @@
   :defer 0.1
   :custom
   (vertico-cycle t)
+  (enable-recursive-minibuffers t)
   :bind
   (:map minibuffer-local-map
 	("<escape>" . abort-minibuffers))
   :config
+  (minibuffer-depth-indicate-mode)
   (vertico-mode))
 
 (defun rod/use-orderless-in-minibuffer ()
