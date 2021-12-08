@@ -1,10 +1,5 @@
-(use-package simple-modeline
-  :hook
-  (after-init . simple-modeline-mode)
-  :config
-  (setq simple-modeline-segments
-   (list (car simple-modeline-segments)
-         (remove 'simple-modeline-segment-minor-modes
-                 (car (cdr simple-modeline-segments))))))
+(use-package doom-modeline
+  :hook (after-init . doom-modeline-mode)
+  :custom (doom-modeline-height 30))
 
 (provide 'rod-modeline)
