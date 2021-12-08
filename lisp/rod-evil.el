@@ -2,6 +2,10 @@
 
 (use-package evil
   :defer 1
+  :general
+  (general-nmap
+    :keymaps 'org-mode-map
+              "TAB" #'org-cycle)
   :custom
   (evil-want-C-i-jump t)
   (evil-want-Y-yank-to-eol t)
