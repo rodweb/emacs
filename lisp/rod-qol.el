@@ -33,4 +33,9 @@
 (use-package restart-emacs
   :commands restart-emacs)
 
+(defun rod/edit-emacs ()
+  "Open init.el."
+  (interactive)
+  (find-file (expand-file-name (concat user-emacs-directory "init.el"))))
+
 (provide 'rod-qol)

@@ -24,6 +24,7 @@
     "d" 'kill-buffer-and-window
     "e" nil
     "eb" 'eval-buffer
+    "ee" 'rod/edit-emacs
     "ef" 'eval-defun
     "er" 'eval-region
     "es" 'eshell
