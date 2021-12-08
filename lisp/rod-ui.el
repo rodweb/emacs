@@ -8,6 +8,9 @@
 (setq use-dialog-box nil
       use-file-dialog nil)
 
+;; disable startup screen
+(setq inhibit-startup-screen t)
+
 ;; set a nice monospace font
 (set-frame-font "JetBrains Mono-13" nil t)
 
