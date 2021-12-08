@@ -1,4 +1,3 @@
-(setq initial-buffer-choice (expand-file-name (concat user-emacs-directory "init.el")))
 (setq native-comp-async-report-warnings-errors 'silent)
 
 (add-hook 'after-init-hook #'(lambda () (message "Emacs took %s to load." (emacs-init-time))))
