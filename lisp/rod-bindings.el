@@ -45,7 +45,7 @@
     "s" 'save-buffer
     "t" (general-simulate-key "C-x t")
     "u" nil
-    "v" nil
+    "v" (general-simulate-key "C-x 4")
     "w" 'other-window
     "x" nil
     "y" nil
