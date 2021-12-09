@@ -7,6 +7,15 @@
   :custom
   (editorconfig-trim-whitespaces-mode 'ws-butler-mode))
 
+(use-package tree-sitter
+  :defer 1
+  :config (setq tree-sitter-debug-jump-buttons t
+                tree-sitter-debug-highlight-jump-region t)
+  (global-tree-sitter-mode))
+
+(use-package tree-sitter-langs
+  :hook (tree-sitter-after-on . tree-sitter-hl-mode))
+
 (use-package dumb-jump
   :defer 1
   :config
