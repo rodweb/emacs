@@ -1,6 +1,8 @@
 (setq straight-use-package-by-default t)
 (setq straight-default-vc 'git)
 (setq straight-vc-git-default-protocol 'ssh)
+(setq straight-host-usernames '((github . "rodweb")
+                                (gitlab . "rodweb")))
 
 (defvar bootstrap-version)
 (let ((bootstrap-file

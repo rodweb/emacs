@@ -9,6 +9,14 @@
 (setq-default bidi-paragraph-direction 'left-to-right
 	      bidi-inhibit-bpa t)
 
-(global-so-long-mode 1)
+(use-package so-long
+  :straight nil
+  :defer 1
+  :config (global-so-long-mode))
+
+(use-package too-long-lines-mode
+  :straight (too-long-lines-mode :host github :repo "rakete/too-long-lines-mode" :fork t)
+  :defer 1
+  :config (too-long-lines-mode))
 
 (provide 'rod-perf)
