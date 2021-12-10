@@ -33,3 +33,4 @@
 (require 'rod-pass)
 (require 'rod-http)
 (require 'rod-centered)
+(require 'rod-abbrev)
