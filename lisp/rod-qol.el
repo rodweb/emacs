@@ -9,7 +9,7 @@
   (interactive "sName: ")
   (let* ((filename (concat user-emacs-directory "lisp/" "rod-" name ".el"))
          (buffer (get-buffer-create filename)))
-    (with-current-buffer (get-buffer "init.el")
+    (with-current-buffer (or (get-buffer "init.el") (get-buffer "init.el<emacs>"))
       (goto-char (point-max))
       (insert (concat "(require 'rod-" name ")"))
       (save-buffer))
