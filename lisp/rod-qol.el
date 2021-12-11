@@ -38,4 +38,20 @@
   (interactive)
   (find-file (expand-file-name (concat user-emacs-directory "init.el"))))
 
+(defun rod/reload-dir-locals ()
+  "Reload dir-localsl for the current buffer."
+  (interactive)
+  (let ((enable-local-variables :all))
+    (hack-dir-local-variables-non-file-buffer)))
+
+(defun rod/reload-all-dir-locals-same-directory ()
+  "For every buffer with the same `default-directory' as the
+current buffer's, reload dir-locals."
+  (interactive)
+  (let ((dir default-directory))
+    (dolist (buffer (buffer-list))
+      (with-current-buffer buffer
+        (when (equal default-directory dir)
+          (rod/reload-dir-locals))))))
+
 (provide 'rod-qol)
