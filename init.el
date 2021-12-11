@@ -35,3 +35,4 @@
 (require 'rod-centered)
 (require 'rod-lisp)
 (require 'rod-abbrev)
+(require 'rod-test)

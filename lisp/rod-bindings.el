@@ -43,7 +43,7 @@
     "q" nil
     "r" 'eglot-rename
     "s" 'save-buffer
-    "t" (general-simulate-key "C-x t")
+    "t" 'rgr-command-map
     "u" nil
     "v" (general-simulate-key "C-x 4")
     "w" 'other-window
