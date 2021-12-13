@@ -37,7 +37,7 @@
     "k" 'kill-this-buffer
     "l" 'consult-line
     "m" 'consult-bookmark
-    "n" nil
+    "n" (general-simulate-key "C-c n")
     "o" 'delete-other-windows
     "p" 'projectile-command-map
     "q" nil
