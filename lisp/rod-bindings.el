@@ -58,6 +58,8 @@
     "gr" 'xref-find-references
     "]e" 'next-error
     "[e" 'previous-error
+    "]l" 'flymake-goto-next-error
+    "[l" 'flymake-goto-prev-error
     "]h" 'diff-hl-show-hunk-next
     "[h" 'diff-hl-show-hunk-previous))
 (add-hook 'after-init-hook #'rod/setup-bindings)
