@@ -10,13 +10,12 @@
   (org-babel-load-languages '((emacs-lisp . t)
                               (python . t)
                               (sql . t)
-                              (shell . t)
-                              (verb . t)))
+                              (shell . t)))
   :bind (("C-c n a" . org-agenda)
          ("C-c n c" . org-capture)))
 
 (use-package org-roam
-  :defer t
+  :defer 1
   :init (setq org-roam-v2-ack t)
   :custom (org-roam-directory "~/org/roam/")
   :bind (("C-c n l" . org-roam-buffer-toggle)
