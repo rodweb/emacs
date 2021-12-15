@@ -52,4 +52,11 @@
         (with-run-command targets working-dir "terraform ")))
   (add-to-list 'run-command-recipes #'run-command-recipe-terraform))
 
+(ignore-errors
+  (require 'ansi-color)
+  (defun rod/colorize-compilation-buffer ()
+    (when (eq major-mode 'compilation-mode)
+      (ansi-color-apply-on-region compilation-filter-start (point-max))))
+  (add-hook 'compilation-filter-hook 'rod/colorize-compilation-buffer))
+
 (provide 'rod-command)
