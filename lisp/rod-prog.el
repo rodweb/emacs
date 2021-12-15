@@ -30,6 +30,8 @@
 (use-package avy
   :commands (avy-goto-char-timer))
 
+(use-package ace-link :defer t)
+
 (use-package expand-region
   :bind
   ("C-=" . er/expand-region))

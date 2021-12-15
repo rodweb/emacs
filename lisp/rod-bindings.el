@@ -65,6 +65,7 @@
     "g." 'eglot-code-action-quickfix
     "ga" 'eglot-code-actions
     "gb" 'xref-pop-marker-stack
+    "gl" 'ace-link
     "go" 'eglot-code-action-organize-imports
     "gr" 'xref-find-references
     "gI" 'eglot-find-implementation
