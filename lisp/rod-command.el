@@ -43,6 +43,13 @@
                 (makefile (concat working-dir "Makefile"))
                 (targets (run-command-recipe-makefile--get-targets makefile)))
       (with-run-command targets working-dir "make ")))
-  (add-to-list 'run-command-recipes #'run-command-recipe-make))
+  (add-to-list 'run-command-recipes #'run-command-recipe-make)
+
+  (defun run-command-recipe-terraform ()
+    "Generate Terraform commands."
+    (if-let ((working-dir (locate-dominating-file default-directory "main.tf"))
+             (targets '("init" "fmt" "validate" "plan" "apply")))
+        (with-run-command targets working-dir "terraform ")))
+  (add-to-list 'run-command-recipes #'run-command-recipe-terraform))
 
 (provide 'rod-command)

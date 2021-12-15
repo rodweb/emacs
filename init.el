@@ -37,3 +37,4 @@
 (require 'rod-abbrev)
 (require 'rod-test)
 (require 'rod-sql)
+(require 'rod-terraform)
