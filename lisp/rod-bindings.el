@@ -13,11 +13,19 @@
   (interactive)
   (switch-to-buffer (other-buffer)))
 
+(defun rod/format-buffer ()
+  "Format whole buffer."
+  (interactive)
+  (cond ((string-equal major-mode "json-mode") (json-mode-beautify (point-min) (point-max)))
+        ((string-equal major-mode "sql-mode") (sqlformat-buffer))
+        (t (eglot-format-buffer))))
+
 (defun rod/setup-bindings ()
   "Setup custom bindings."
   (leader-def
     "SPC" 'execute-extended-command
     "TAB" 'rod/alternate-buffer
+    "=" 'rod/format-buffer
     "a" 'projectile-toggle-between-implementation-and-test
     "b" 'consult-buffer
     "c" (general-simulate-key "C-c")
