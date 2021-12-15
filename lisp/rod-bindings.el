@@ -62,12 +62,16 @@
 
   (general-nmap
     ;; goto
+    "g." 'eglot-code-action-quickfix
+    "ga" 'eglot-code-actions
     "gb" 'xref-pop-marker-stack
+    "go" 'eglot-code-action-organize-imports
     "gr" 'xref-find-references
+    "gI" 'eglot-find-implementation
+    "g]" 'flymake-goto-next-error
+    "g[" 'flymake-goto-prev-error
     "]e" 'next-error
     "[e" 'previous-error
-    "]l" 'flymake-goto-next-error
-    "[l" 'flymake-goto-prev-error
     "]h" 'diff-hl-show-hunk-next
     "[h" 'diff-hl-show-hunk-previous))
 (add-hook 'after-init-hook #'rod/setup-bindings)
