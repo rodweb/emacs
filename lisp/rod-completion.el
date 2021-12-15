@@ -8,6 +8,7 @@
   (:map company-mode-map
         ([remap completion-at-point] . #'company-complete)
         ([remap indent-for-tab-command] . #'company-indent-or-complete-common))
+  ("C-c y" . company-yasnippet)
   :config
   (global-company-mode))
 
