@@ -36,3 +36,4 @@
 (require 'rod-lisp)
 (require 'rod-abbrev)
 (require 'rod-test)
+(require 'rod-sql)
