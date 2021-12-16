@@ -13,11 +13,19 @@
   (interactive)
   (switch-to-buffer (other-buffer)))
 
+(defun rod/format-elisp-buffer ()
+  "Format an emacs-lisp-mode buffer."
+  (interactive)
+  (untabify (point-min) (point-max))
+  (delete-trailing-whitespace (point-min) (point-max))
+  (indent-region (point-min) (point-max)))
+
 (defun rod/format-buffer ()
   "Format whole buffer."
   (interactive)
   (cond ((string-equal major-mode "json-mode") (json-mode-beautify (point-min) (point-max)))
         ((string-equal major-mode "sql-mode") (sqlformat-buffer))
+        ((string-equal major-mode "emacs-lisp-mode") (rod/format-elisp-buffer))
         (t (eglot-format-buffer))))
 
 (defun rod/setup-bindings ()
