@@ -5,7 +5,7 @@
   :general
   (general-nmap
     :keymaps 'org-mode-map
-              "TAB" #'org-cycle)
+    "TAB" #'org-cycle)
   :custom
   (evil-want-C-i-jump t)
   (evil-want-Y-yank-to-eol t)
@@ -17,6 +17,7 @@
   (evil-set-initial-state 'git-commit-mode 'insert)
   (evil-set-initial-state 'prog-mode 'normal)
   (evil-set-initial-state 'text-mode 'normal)
+  (evil-set-initial-state 'fundamental-mode 'normal)
   (evil-set-initial-state 'compilation-mode 'emacs)
   (evil-set-initial-state 'ert-results-mode 'emacs)
   (evil-set-initial-state 'help-mode 'emacs)
