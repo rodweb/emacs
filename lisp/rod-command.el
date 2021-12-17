@@ -52,7 +52,10 @@
         (with-run-command targets working-dir "terraform ")))
   (add-to-list 'run-command-recipes #'run-command-recipe-terraform))
 
-(ignore-errors
+(use-package compile
+  :straight nil
+  :custom (compilation-scroll-output 'first)
+  :config
   (require 'ansi-color)
   (defun rod/colorize-compilation-buffer ()
     (when (eq major-mode 'compilation-mode)
