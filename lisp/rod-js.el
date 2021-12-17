@@ -6,7 +6,7 @@
   :straight (npm-mode :host github :repo "mojochao/npm-mode" :fork t)
   :hook ((typescript-mode js-mode) . npm-mode))
 
-(use-package indium)
+(use-package indium :defer t)
 
 (add-to-list 'compilation-error-regexp-alist-alist
             '(javascript-stack-trace
