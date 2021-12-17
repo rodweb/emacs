@@ -38,3 +38,4 @@
 (require 'rod-test)
 (require 'rod-sql)
 (require 'rod-terraform)
+(require 'rod-jenkins)
