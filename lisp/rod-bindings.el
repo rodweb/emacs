@@ -28,6 +28,22 @@
         ((string-equal major-mode "emacs-lisp-mode") (rod/format-elisp-buffer))
         (t (eglot-format-buffer))))
 
+(defun rod/copy-filename ()
+  "Copy `buffer-file-name'."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (if filename
+        (message (kill-new filename))
+      (error "Buffer not visiting file."))
+    filename))
+
+(defun rod/copy-directory ()
+  "Copy `buffer-file-name's directory."
+  (interactive)
+  (if-let ((filename (let ((inhibit-message t))
+                       (rod/copy-filename))))
+      (message (kill-new (url-file-directory filename)))))
+
 (defun rod/setup-bindings ()
   "Setup custom bindings."
   (leader-def
@@ -65,6 +81,9 @@
     "w" 'other-window
     "x" nil
     "y" nil
+    "yg" 'git-link
+    "yf" 'rod/copy-filename
+    "yd" 'rod/copy-directory
     "z" nil
     ";" 'eval-expression)
 
