@@ -50,6 +50,8 @@
     "SPC" 'execute-extended-command
     "TAB" 'rod/alternate-buffer
     "=" 'rod/format-buffer
+    ";" 'eval-expression
+    "/" 'consult-line
     "a" 'projectile-toggle-between-implementation-and-test
     "b" 'consult-buffer
     "c" (general-simulate-key "C-c")
@@ -63,11 +65,11 @@
     "et" 'vterm
     "f" 'projectile-find-file
     "g" 'magit-status
-    "h" nil
+    "h" 'consult-recent-file
     "i" 'consult-imenu
     "j" 'avy-goto-char-timer
     "k" 'kill-this-buffer
-    "l" 'consult-line
+    "l" 'magit-log-buffer-file
     "m" 'consult-bookmark
     "n" (general-simulate-key "C-c n")
     "o" 'delete-other-windows
@@ -84,8 +86,7 @@
     "yg" 'git-link
     "yf" 'rod/copy-filename
     "yd" 'rod/copy-directory
-    "z" nil
-    ";" 'eval-expression)
+    "z" nil)
 
   (general-nmap
     ;; goto
