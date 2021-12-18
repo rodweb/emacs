@@ -3,6 +3,11 @@
   (general-evil-setup)
   (general-override-mode))
 
+(use-package which-key
+  :after general
+  :config
+  (which-key-mode))
+
 (general-create-definer leader-def
   :prefix "SPC"
   :states '(normal visual emacs)
