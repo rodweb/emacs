@@ -73,7 +73,7 @@
     "L" 'magit-log-buffer-file
     "m" nil
     "ma" 'bookmark-set
-    "ml" 'consult-bookmark
+    "mm" 'consult-bookmark
     "mj" 'bookmark-jump
     "md" 'bookmark-delete
     "n" (general-simulate-key "C-c n")
