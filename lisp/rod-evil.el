@@ -27,6 +27,14 @@
   :after evil
   :config (evil-commentary-mode))
 
+(use-package evil-textobj-tree-sitter
+  :after (evil tree-sitter)
+  :config
+  (define-key evil-inner-text-objects-map "c" (evil-textobj-tree-sitter-get-textobj "class.inner"))
+  (define-key evil-outer-text-objects-map "c" (evil-textobj-tree-sitter-get-textobj "class.outer"))
+  (define-key evil-inner-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.inner"))
+  (define-key evil-outer-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.outer")))
+
 (use-package goto-chg
   :after evil)
 
