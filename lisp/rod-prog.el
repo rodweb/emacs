@@ -28,7 +28,11 @@
   ("C-c ," . quickrun))
 
 (use-package avy
-  :commands (avy-goto-char-timer))
+  :commands
+  (avy-goto-char-timer)
+  :custom
+  (avy-background true)
+  (avy-timeout-seconds 0.3))
 
 (use-package ace-link :defer t)
 
