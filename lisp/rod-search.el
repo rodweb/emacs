@@ -8,8 +8,7 @@
   :format regexp
   :dir project
   :files "all"
-  :flags ("--type-add 'notest:*.test.js'"
-	  "--type-add 'notest:*.test.ts'"
+  :flags ("--type-add 'notest:*.test.*'"
 	  "--type-not notest")
   :menu ("Custom" "n" "No tests"))
 
