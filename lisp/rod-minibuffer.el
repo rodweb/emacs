@@ -63,6 +63,8 @@
 (use-package recentf
   :straight nil
   :after vertico
+  :custom
+  (recentf-max-saved-items 50)
   :config
   ;; saves every 5 minutes
   (run-at-time nil (* 5 60) #'recentf-save-list)
