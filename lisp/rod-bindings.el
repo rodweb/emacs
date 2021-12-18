@@ -70,7 +70,11 @@
     "j" 'avy-goto-char-timer
     "k" 'kill-this-buffer
     "l" 'magit-log-buffer-file
-    "m" 'consult-bookmark
+    "m" nil
+    "ma" 'bookmark-set
+    "ml" 'consult-bookmark
+    "mj" 'bookmark-jump
+    "md" 'bookmark-delete
     "n" (general-simulate-key "C-c n")
     "o" 'delete-other-windows
     "p" 'projectile-command-map
