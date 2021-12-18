@@ -51,7 +51,7 @@
     "TAB" 'rod/alternate-buffer
     "=" 'rod/format-buffer
     ";" 'eval-expression
-    "/" 'consult-line
+    "/" 'rg-menu
     "a" 'projectile-toggle-between-implementation-and-test
     "b" 'consult-buffer
     "c" (general-simulate-key "C-c")
@@ -69,7 +69,8 @@
     "i" 'consult-imenu
     "j" 'avy-goto-char-timer
     "k" 'kill-this-buffer
-    "l" 'magit-log-buffer-file
+    "l" 'consult-line
+    "L" 'magit-log-buffer-file
     "m" nil
     "ma" 'bookmark-set
     "ml" 'consult-bookmark
