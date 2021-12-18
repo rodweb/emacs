@@ -3,9 +3,6 @@
   :custom
   (projectile-generic-command "rg --files --hidden")
   (projectile-project-search-path '("~/dev" "~/dev/gupy"))
-  :bind
-  (:map projectile-mode-map
-	("C-c p" . projectile-command-map))
   :config
   (projectile-mode))
 
