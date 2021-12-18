@@ -49,7 +49,8 @@
   (xref-show-definitions-function #'consult-xref)
   :config
   (consult-customize
-   consult-buffer :preview-key nil))
+   consult-buffer :preview-key nil
+   consult-recent-file :preview-key nil))
 
 (use-package embark-consult
   :after consult)
