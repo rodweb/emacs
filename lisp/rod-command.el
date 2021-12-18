@@ -54,7 +54,6 @@
 
 (use-package compile
   :straight nil
-  :custom (compilation-scroll-output 'first)
   :config
   (require 'ansi-color)
   (defun rod/colorize-compilation-buffer ()
