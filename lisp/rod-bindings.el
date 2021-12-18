@@ -5,8 +5,8 @@
 
 (general-create-definer leader-def
   :prefix "SPC"
-  :non-normal-prefix "M-SPC"
-  :states '(normal visual emacs))
+  :states '(normal visual emacs)
+  :keymaps 'override)
 
 (defun rod/alternate-buffer ()
   "Switch to previous buffer."
