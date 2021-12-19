@@ -84,7 +84,7 @@
     "n" (general-simulate-key "C-c n")
     "o" 'delete-other-windows
     "p" 'projectile-command-map
-    "q" 'projectile-ripgrep
+    "q" 'consult-ripgrep
     "r" 'eglot-rename
     "s" 'save-buffer
     "t" 'rgr-command-map
