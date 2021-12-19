@@ -31,7 +31,7 @@
   :commands
   (avy-goto-char-timer)
   :custom
-  (avy-background true)
+  (avy-background t)
   (avy-timeout-seconds 0.3))
 
 (use-package ace-link :defer t)
