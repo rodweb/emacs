@@ -21,6 +21,7 @@
   (evil-set-initial-state 'compilation-mode 'emacs)
   (evil-set-initial-state 'ert-results-mode 'emacs)
   (evil-set-initial-state 'help-mode 'emacs)
+  (evil-set-initial-state 'Info-mode 'emacs)
   (evil-mode))
 
 (use-package evil-commentary
