@@ -1,6 +1,6 @@
 (use-package eglot
   :hook
-  (typescript-mode . eglot-ensure)
+  ((js-mode typescript-mode) . eglot-ensure)
   :custom
   (eglot-confirm-server-initiated-edits nil)
   :bind
