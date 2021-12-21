@@ -19,9 +19,11 @@
             '("internal/.*\\.js" . nil))
 
 (defun rod/setup-js ()
-  (setq-local tab-width 2))
+  (setq-local tab-width 2
+              javascript-indent-level 2
+              typescript-indent-level 2))
 
-(add-hook 'js-mode #'rod/setup-js)
-(add-hook 'typescript-mode #'rod/setup-js)
+(add-hook 'js-mode-hook #'rod/setup-js)
+(add-hook 'typescript-mode-hook #'rod/setup-js)
 
 (provide 'rod-js)
