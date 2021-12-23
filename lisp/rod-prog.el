@@ -19,7 +19,8 @@
 (use-package dumb-jump
   :defer 1
   :config
-  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
+  (dumb-jump-mode))
 
 (use-package quickrun
   :custom
