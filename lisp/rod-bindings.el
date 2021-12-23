@@ -88,7 +88,7 @@
     "r" 'eglot-rename
     "s" 'save-buffer
     "t" 'rgr-command-map
-    "u" nil
+    "u" (general-simulate-key "C-x t")
     "v" (general-simulate-key "C-x 4")
     "w" 'other-window
     "x" nil
@@ -107,10 +107,10 @@
     "go" 'eglot-code-action-organize-imports
     "gr" 'xref-find-references
     "gI" 'eglot-find-implementation
-    "g]" 'flymake-goto-next-error
-    "g[" 'flymake-goto-prev-error
-    "]e" 'next-error
-    "[e" 'previous-error
+    "]e" 'flymake-goto-next-error
+    "[e" 'flymake-goto-prev-error
+    "]l" 'next-error
+    "[l" 'previous-error
     "]h" 'diff-hl-show-hunk-next
     "[h" 'diff-hl-show-hunk-previous))
 (add-hook 'after-init-hook #'rod/setup-bindings)
