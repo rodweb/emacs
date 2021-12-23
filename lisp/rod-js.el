@@ -6,6 +6,9 @@
   :straight (npm-mode :host github :repo "mojochao/npm-mode" :fork t)
   :hook ((typescript-mode js-mode) . npm-mode))
 
+(use-package nvm
+  :hook ((typescript-mode js-mode) . nvm-use-for-buffer))
+
 (use-package indium :defer t)
 
 (add-to-list 'compilation-error-regexp-alist-alist
