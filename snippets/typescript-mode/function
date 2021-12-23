@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: function
+# key: fn
+# --
+
+${1:async }function $2($3)$4 {
+  $0
+}

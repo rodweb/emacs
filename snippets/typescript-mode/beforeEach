@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: beforeEach
+# key: bfe
+# --
+
+beforeEach(${1:async }() => {
+  $0
+});

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: afterAll
+# key: afa
+# --
+
+afterAll(${1:async }() => {
+  $0
+});

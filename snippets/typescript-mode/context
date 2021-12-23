@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: context
+# key: cont
+# --
+
+context('$1', ${2:async }() => {
+  $0
+});

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: arrowFunction
+# key: afn
+# --
+
+${1:async }($2) => {
+  $0
+}

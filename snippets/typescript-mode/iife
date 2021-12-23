@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: immediately invoked function expression
+# key: iife
+# --
+
+(${1:async}() => {
+  $0
+})()${2:
+  .then(${3:console.log})
+  .catch(${4:console.error})};

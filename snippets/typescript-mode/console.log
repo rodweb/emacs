@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: console.log (stringify)
+# key: cl
+# --
+
+console.log('$1', JSON.stringify($0, null, 2));
