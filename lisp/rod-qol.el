@@ -1,5 +1,6 @@
 (setq native-comp-async-report-warnings-errors 'silent)
 (setq custom-file (expand-file-name (concat user-emacs-directory "custom.el")))
+(load custom-file)
 
 (add-hook 'after-init-hook #'(lambda () (message "Emacs took %s to load." (emacs-init-time))))
 
