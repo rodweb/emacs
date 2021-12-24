@@ -10,6 +10,8 @@
   (org-babel-load-languages '((emacs-lisp . t)
                               (python . t)
                               (sql . t)
+                              (js . t)
+                              (calc .t)
                               (shell . t)))
   :bind (("C-c n n" . rod/find-org-file)
          ("C-c n a" . org-agenda)
