@@ -50,7 +50,18 @@
     (if-let ((working-dir (locate-dominating-file default-directory "main.tf"))
              (targets '("init" "fmt" "validate" "plan" "apply")))
         (with-run-command targets working-dir "terraform ")))
-  (add-to-list 'run-command-recipes #'run-command-recipe-terraform))
+  (add-to-list 'run-command-recipes #'run-command-recipe-terraform)
+
+  (defun run-command-recipe-docker-compose ()
+    "Generate docker-compose commands."
+    (when-let* ((working-dir (locate-dominating-file default-directory "docker-compose.yml"))
+                (prefix "docker-compose "))
+      (list
+       (list :command-name "up detached"
+             :command-line (concat prefix "up -d")
+             :working-dir working-dir))))
+
+  (add-to-list 'run-command-recipes #'run-command-recipe-docker-compose))
 
 (use-package compile
   :straight nil
