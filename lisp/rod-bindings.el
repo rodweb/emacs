@@ -81,7 +81,12 @@
     "mm" 'consult-bookmark
     "mj" 'bookmark-jump
     "md" 'bookmark-delete
-    "n" (general-simulate-key "C-c n")
+    "n" nil
+    "na" 'org-agenda
+    "nc" 'org-capture
+    "ni" #'(lambda () (interactive) (org-capture t "i"))
+    "nj" 'org-journal-new-entry
+    "nn" 'rod/find-org-file
     "o" 'delete-other-windows
     "p" 'projectile-command-map
     "q" 'consult-ripgrep

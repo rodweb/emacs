@@ -12,10 +12,14 @@
                               (sql . t)
                               (js . t)
                               (calc .t)
-                              (shell . t)))
-  :bind (("C-c n n" . rod/find-org-file)
-         ("C-c n a" . org-agenda)
-         ("C-c n c" . org-capture)))
+                              (shell . t))))
+
+(use-package org-journal
+  :defer t
+  :custom
+  (org-journal-dir "~/org/journal")
+  (org-journal-encrypt-journal t)
+  (org-journal-date-format "%F"))
 
 (use-package org-roam
   :defer t
