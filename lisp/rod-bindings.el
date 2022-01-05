@@ -84,8 +84,10 @@
     "n" nil
     "na" 'org-agenda
     "nc" 'org-capture
+    "nf" 'org-roam-node-find
     "ni" #'(lambda () (interactive) (org-capture t "i"))
     "nj" 'org-journal-new-entry
+    "nl" 'org-roam-buffer-toggle
     "nn" 'rod/find-org-file
     "o" 'delete-other-windows
     "p" 'projectile-command-map
