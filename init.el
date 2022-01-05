@@ -39,3 +39,4 @@
 (require 'rod-sql)
 (require 'rod-terraform)
 (require 'rod-jenkins)
+(require 'rod-pomodoro)
