@@ -5,6 +5,7 @@
   :custom
   (org-imenu-depth 4)
   (org-agenda-files '("~/org/inbox.org"))
+  (org-archive-location "~/org/archive.org::datetree/* Finished Tasks")
   (org-crypt-key "rod.apd@gmail.com")
   (org-capture-templates '(("i" "Inbox" entry (file+headline "inbox.org" "Inbox") "** TODO %?")))
   (org-babel-load-languages '((emacs-lisp . t)
