@@ -40,3 +40,4 @@
 (require 'rod-terraform)
 (require 'rod-jenkins)
 (require 'rod-pomodoro)
+(require 'rod-epa)
