@@ -1,4 +1,5 @@
 (use-package gcmh
+  :custom (gcmh-verbose t)
   :config (gcmh-mode))
 
 (use-package fnhh
