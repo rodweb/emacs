@@ -31,7 +31,7 @@
   (cond ((string-equal major-mode "json-mode") (json-mode-beautify (point-min) (point-max)))
         ((string-equal major-mode "sql-mode") (sqlformat-buffer))
         ((string-equal major-mode "emacs-lisp-mode") (rod/format-elisp-buffer))
-        (t (eglot-format-buffer))))
+        (t (lsp-format-buffer))))
 
 (defun rod/copy-filename ()
   "Copy `buffer-file-name'."
@@ -92,7 +92,7 @@
     "o" 'delete-other-windows
     "p" 'projectile-command-map
     "q" 'consult-ripgrep
-    "r" 'eglot-rename
+    "r" 'lsp-rename
     "s" 'save-buffer
     "t" 'rgr-command-map
     "u" (general-simulate-key "C-x t")
@@ -107,19 +107,19 @@
 
   (general-nmap
     ;; goto
-    "g." 'eglot-code-action-quickfix
-    "ga" 'eglot-code-actions
+    "ga" 'lsp-execute-code-action
     "gb" 'xref-pop-marker-stack
     "gl" 'ace-link
-    "go" 'eglot-code-action-organize-imports
+    "go" 'lsp-organize-imports
     "gr" 'xref-find-references
-    "gI" 'eglot-find-implementation
+    "gI" 'lsp-find-implementation
     "]e" 'flymake-goto-next-error
     "[e" 'flymake-goto-prev-error
     "]l" 'next-error
     "[l" 'previous-error
     "]h" 'diff-hl-show-hunk-next
     "[h" 'diff-hl-show-hunk-previous))
+
 (add-hook 'after-init-hook #'rod/setup-bindings)
 
 (provide 'rod-bindings)
