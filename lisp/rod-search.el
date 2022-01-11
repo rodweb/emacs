@@ -12,4 +12,12 @@
 	  "--type-not notest")
   :menu ("Custom" "n" "No tests"))
 
+(use-package comb
+  :hook ((comb-configure-mode comb-buffer-setup) . turn-off-evil-mode)
+  :bind
+  (:map comb-keymap
+        ("r" . #'comb-reject-next)
+        ("a" . #'comb-approve-next))
+  :defer t)
+
 (provide 'rod-search)
