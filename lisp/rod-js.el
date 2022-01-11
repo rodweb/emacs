@@ -9,6 +9,9 @@
 (use-package nvm
   :hook ((typescript-mode js-mode) . nvm-use-for-buffer))
 
+(use-package prettier-js
+  :hook ((typescript-mode js-mode) . prettier-js-mode))
+
 (use-package indium :defer t)
 
 (add-to-list 'compilation-error-regexp-alist-alist
