@@ -3,6 +3,6 @@
 # key: fn
 # --
 
-${1:async }function $2($3)$4 {
+function $1($2)$3 {
   $0
 }
