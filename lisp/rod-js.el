@@ -10,19 +10,24 @@
   :hook ((typescript-mode js-mode) . nvm-use-for-buffer))
 
 (use-package prettier-js
-  :hook ((typescript-mode js-mode) . prettier-js-mode))
+  :hook ((typescript-mode js-mode) . enable-prettier))
+
+(defun enable-prettier ()
+  (if-let ((dir (locate-dominating-file default-directory ".prettierrc.js")))
+      (progn (prettier-js-mode +1)
+             (setq-local prettier-js-command (concat dir "node_modules/.bin/prettier")))))
 
 (use-package indium :defer t)
 
 (add-to-list 'compilation-error-regexp-alist-alist
-            '(javascript-stack-trace
-                "(\\([^:]+\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\))"
-                1 2 3 1))
+             '(javascript-stack-trace
+               "(\\([^:]+\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\))"
+               1 2 3 1))
 
 (add-to-list 'compilation-error-regexp-alist 'javascript-stack-trace)
 
 (add-to-list 'compilation-transform-file-match-alist
-            '("internal/.*\\.js" . nil))
+             '("internal/.*\\.js" . nil))
 
 (defun rod/setup-js ()
   (setq-local tab-width 2

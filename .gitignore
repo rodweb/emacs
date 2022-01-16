@@ -13,3 +13,6 @@
 /org-roam.db
 /bookmarks
 /code-review-db-file.sqlite
+/.cache/
+/.lsp-session-v1
+/.org-id-locations
