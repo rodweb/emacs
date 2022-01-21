@@ -5,4 +5,8 @@
   :config
   (desktop-save-mode 1))
 
+(use-package winner
+  :defer 1
+  :config (winner-mode 1))
+
 (provide 'rod-session)
