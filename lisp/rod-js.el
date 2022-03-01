@@ -21,7 +21,7 @@
 
 (add-to-list 'compilation-error-regexp-alist-alist
              '(javascript-stack-trace
-               "(\\([^:]+\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\))"
+               " (\\([^:]+\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\))"
                1 2 3 1))
 
 (add-to-list 'compilation-error-regexp-alist 'javascript-stack-trace)

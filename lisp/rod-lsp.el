@@ -23,6 +23,7 @@
   (lsp-mode . lsp-enable-which-key-integration)
   :custom
   (lsp-keymap-prefix "C-c l")
+  (lsp-eslint-enable nil)
   :config (setq read-process-output-max (* 1024 1024)
                 lsp-headerline-breadcrumb-enable nil
                 lsp-enable-symbol-highlighting nil

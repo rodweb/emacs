@@ -2,6 +2,7 @@
   :defer t
   :hook (org-capture-mode . evil-insert-state)
   :init (setq org-directory "~/org")
+  :bind (("C-M-<return>" . org-meta-return))
   :custom
   (org-imenu-depth 4)
   (org-agenda-files '("~/org/inbox.org"))
