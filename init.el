@@ -41,3 +41,4 @@
 (require 'rod-jenkins)
 (require 'rod-pomodoro)
 (require 'rod-epa)
+(require 'rod-kubernetes)
