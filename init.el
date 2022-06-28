@@ -42,3 +42,4 @@
 (require 'rod-pomodoro)
 (require 'rod-epa)
 (require 'rod-kubernetes)
+(require 'rod-rust)

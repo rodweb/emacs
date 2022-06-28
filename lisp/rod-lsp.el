@@ -20,6 +20,7 @@
   :commands (lsp lsp-deferred lsp-org)
   :hook
   (typescript-mode . lsp-deferred)
+  (rust-mode . lsp-deferred)
   (lsp-mode . lsp-enable-which-key-integration)
   :custom
   (lsp-keymap-prefix "C-c l")
