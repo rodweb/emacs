@@ -103,7 +103,10 @@
     "yg" 'git-link
     "yf" 'rod/copy-filename
     "yd" 'rod/copy-directory
-    "z" nil)
+    "z" nil
+    "zp" 'prodigy
+    "zd" 'docker
+    "zk" 'kubernetes-overview)
 
   (general-nmap
     ;; goto
