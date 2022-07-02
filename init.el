@@ -43,3 +43,4 @@
 (require 'rod-epa)
 (require 'rod-kubernetes)
 (require 'rod-rust)
+(require 'rod-docker)
