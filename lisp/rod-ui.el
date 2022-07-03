@@ -8,8 +8,14 @@
 (setq use-dialog-box nil
       use-file-dialog nil)
 
+;; disable bell
+(setq visible-bell t)
+
 ;; disable startup screen
 (setq inhibit-startup-screen t)
+
+;; disable title
+(setq frame-resize-pixelwise t)
 
 ;; set a nice monospace font
 (set-frame-font "JetBrains Mono-13" nil t)
