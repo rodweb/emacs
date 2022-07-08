@@ -3,7 +3,7 @@
 /.emacs.desktop
 /.emacs.desktop.lock
 /projects
-/transient/
+/transient/history.el
 /history
 /projectile-bookmarks.eld
 /projectile.cache
