@@ -2,7 +2,7 @@
   :defer 1
   :custom
   (projectile-generic-command "rg --files --hidden")
-  (projectile-project-search-path '("~/dev" "~/dev/gupy"))
+  (projectile-project-search-path '("~/dev" "~/dev/gupy" "~/Projects"))
   (projectile-create-missing-test-files t)
   :config
   (projectile-mode))
