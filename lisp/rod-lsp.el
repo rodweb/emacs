@@ -35,7 +35,6 @@
   :after lsp-mode)
 
 (use-package consult-lsp
-  :defer t
-  :config (consult-lsp-marginalia-mode t))
+  :defer t)
 
 (provide 'rod-lsp)
