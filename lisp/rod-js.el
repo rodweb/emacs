@@ -9,6 +9,10 @@
 (use-package nvm
   :hook ((typescript-mode js-mode) . nvm-use-for-buffer))
 
+(use-package compile-eslint
+  :straight (compile-eslint :host github :repo "Fuco1/compile-eslint")
+  :config (push 'eslint compilation-error-regexp-alist))
+
 (use-package prettier-js
   :hook ((typescript-mode js-mode) . enable-prettier))
 
