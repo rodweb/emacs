@@ -40,7 +40,7 @@
   (find-file (expand-file-name (concat user-emacs-directory "init.el"))))
 
 (defun rod/reload-dir-locals ()
-  "Reload dir-localsl for the current buffer."
+  "Reload dir-locals for the current buffer."
   (interactive)
   (let ((enable-local-variables :all))
     (hack-dir-local-variables-non-file-buffer)))
