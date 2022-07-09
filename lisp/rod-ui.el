@@ -9,7 +9,7 @@
       use-file-dialog nil)
 
 ;; disable bell
-(setq visible-bell t)
+(setq ring-bell-function 'ignore)
 
 ;; disable startup screen
 (setq inhibit-startup-screen t)
