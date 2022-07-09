@@ -8,6 +8,12 @@
   :config
   (which-key-mode))
 
+(use-package keyfreq
+  :defer 1
+  :config
+  (keyfreq-mode 1)
+  (keyfreq-autosave-mode 1))
+
 (general-create-definer leader-def
   :prefix "SPC"
   :states '(normal visual emacs)
