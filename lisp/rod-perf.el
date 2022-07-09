@@ -1,4 +1,5 @@
 (use-package gcmh
+  :straight (:host github :repo "emacsmirror/gcmh")
   :custom (gcmh-verbose t)
   :config (gcmh-mode))
 
@@ -8,7 +9,7 @@
 
 ;; disable bidirectional display
 (setq-default bidi-paragraph-direction 'left-to-right
-	      bidi-inhibit-bpa t)
+              bidi-inhibit-bpa t)
 
 (use-package so-long
   :straight nil
