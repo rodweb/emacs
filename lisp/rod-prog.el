@@ -57,12 +57,10 @@
   (global-superword-mode 1)
 
   ;; better default functions
-  (global-set-key (kbd "M-/") #'hippie-expand)
-  (global-set-key (kbd "C-x C-b") #'ibuffer)
-  (global-set-key (kbd "C-s") 'isearch-forward-regexp)
-  (global-set-key (kbd "C-r") 'isearch-backward-regexp)
-  (global-set-key (kbd "C-M-s") 'isearch-forward)
-  (global-set-key (kbd "C-M-r") 'isearch-backward))
+  (global-set-key [remap isearch-forward] #'isearch-forward-regexp)
+  (global-set-key [remap isearch-backward] #'isearch-backward-regexp)
+  (global-set-key [remap list-buffers] #'ibuffer)
+  (global-set-key [remap dabbrev-expand] #'hippie-expand))
 (add-hook 'after-init-hook #'rod/setup-programming-defaults)
 
 (provide 'rod-prog)
