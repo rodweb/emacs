@@ -45,3 +45,4 @@
 (require 'rod-rust)
 (require 'rod-docker)
 (require 'rod-go)
+(require 'rod-flyspell)
