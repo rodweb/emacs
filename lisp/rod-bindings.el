@@ -12,7 +12,10 @@
   :defer 1
   :config
   (keyfreq-mode 1)
-  (keyfreq-autosave-mode 1))
+  (keyfreq-autosave-mode 1)
+  (setq keyfreq-excluded-commands '(self-insert-command
+                                    org-self-insert-command
+                                    mwheel-scroll)))
 
 (general-create-definer leader-def
   :prefix "SPC"
