@@ -123,6 +123,9 @@
     ;; goto
     "ga" 'lsp-execute-code-action
     "gb" 'xref-pop-marker-stack
+    "ghs" 'git-gutter:stage-hunk
+    "ghr" 'git-gutter:revert-hunk
+    "ghp" 'git-gutter:popup-hunk
     "gl" 'ace-link
     "go" 'lsp-organize-imports
     "gr" 'xref-find-references
@@ -131,8 +134,8 @@
     "[e" 'flymake-goto-prev-error
     "]l" 'next-error
     "[l" 'previous-error
-    "]h" 'diff-hl-show-hunk-next
-    "[h" 'diff-hl-show-hunk-previous))
+    "]h" 'git-gutter:next-hunk
+    "[h" 'git-gutter:previous-hunk))
 
 (add-hook 'after-init-hook #'rod/setup-bindings)
 

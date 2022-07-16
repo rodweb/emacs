@@ -19,6 +19,15 @@
   :config
   (global-diff-hl-mode 1))
 
+(use-package git-gutter
+  :defer 1
+  :custom
+  (git-gutter:ask-p nil)
+  (git-gutter:display-p nil)
+  :config
+  (global-git-gutter-mode 1)
+  (add-to-list 'git-gutter:update-commands #'other-window))
+
 (use-package git-link
   :defer t
   :custom
