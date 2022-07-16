@@ -2,8 +2,8 @@
   :hook (org-mode . rod/setup-verb-mode))
 
 (use-package verb-env
-  :after verb
-  :straight '(:host github :repo "rodweb/verb-env"))
+  :straight (verb-env :host github :repo "rodweb/verb-env" :branch "main")
+  :hook (verb-mode . verb-env-mode))
 
 (defun rod/setup-verb-mode ()
   (org-babel-do-load-languages 'org-babel-load-languages
