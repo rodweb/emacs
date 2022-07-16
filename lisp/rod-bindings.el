@@ -60,6 +60,21 @@
                        (rod/copy-filename))))
       (message (kill-new (url-file-directory filename)))))
 
+(defun rod/rename ()
+  "Rename symbol."
+  (interactive)
+  (cond ((bound-and-true-p tide-mode) (tide-rename-symbol))
+        ((bound-and-true-p lsp-mode) (call-interactively #'lsp-rename))
+        (t (call-interactively #'rod/rename-symbol))))
+
+(defun rod/rename-symbol (new)
+  "Rename symbol at point."
+  (interactive (list
+                (read-string (format "Rename %s to: " (thing-at-point 'symbol)))))
+  (let ((old (thing-at-point 'symbol)))
+    (mark-defun)
+    (replace-string old new)))
+
 (defun rod/setup-bindings ()
   "Setup custom bindings."
   (leader-def
@@ -103,7 +118,7 @@
     "o" 'delete-other-windows
     "p" 'projectile-command-map
     "q" 'consult-ripgrep
-    "r" 'lsp-rename
+    "r" #'rod/rename
     "s" 'save-buffer
     "t" 'rgr-command-map
     "u" (general-simulate-key "C-x t")
