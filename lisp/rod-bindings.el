@@ -8,6 +8,8 @@
   :config
   (which-key-mode))
 
+(use-package hydra :defer t)
+
 (use-package keyfreq
   :defer 1
   :config
