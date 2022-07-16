@@ -17,7 +17,10 @@
   (keyfreq-autosave-mode 1)
   (setq keyfreq-excluded-commands '(self-insert-command
                                     org-self-insert-command
-                                    mwheel-scroll)))
+                                    vterm--self-insert
+                                    mwheel-scroll
+                                    lsp-ui-doc--handle-mouse-movement
+                                    ignore)))
 
 (general-create-definer leader-def
   :prefix "SPC"
