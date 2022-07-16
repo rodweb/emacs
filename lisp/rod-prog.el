@@ -54,7 +54,6 @@
   (electric-pair-mode 1)
   (global-hl-line-mode 1)
   (delete-selection-mode 1)
-  (global-superword-mode 1)
 
   ;; better default functions
   (global-set-key [remap isearch-forward] #'isearch-forward-regexp)
