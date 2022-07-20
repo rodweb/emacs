@@ -9,7 +9,9 @@
 (use-package code-review
   :bind
   (:map forge-topic-mode-map
-        ("C-c r" . code-review-forge-pr-at-point)))
+        ("C-c r" . code-review-forge-pr-at-point))
+  :custom (code-review-auth-login-marker 'forge))
+
 
 (use-package diff-hl
   :defer 1
