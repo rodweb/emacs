@@ -63,6 +63,8 @@
 
   (add-to-list 'run-command-recipes #'run-command-recipe-docker-compose))
 
+(use-package alert :defer t)
+
 (use-package compile
   :straight nil
   :config
@@ -70,6 +72,13 @@
   (defun rod/colorize-compilation-buffer ()
     (when (eq major-mode 'compilation-mode)
       (ansi-color-apply-on-region compilation-filter-start (point-max))))
-  (add-hook 'compilation-filter-hook 'rod/colorize-compilation-buffer))
+  (defun rod/notify-compilation-finished (buffer exit-string)
+    "Notifies when the compilation has finished."
+    (alert "compilation finished"
+           :severity (if (string-prefix-p "exited abnormally" exit-string)
+                         'high
+                       'normal)))
+  (add-hook 'compilation-filter-hook 'rod/colorize-compilation-buffer)
+  (add-hook 'compilation-finish-functions 'rod/notify-compilation-finished))
 
 (provide 'rod-command)
