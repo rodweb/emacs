@@ -32,6 +32,8 @@
          ("C-c n i" . org-roam-node-insert))
   :config (org-roam-setup))
 
+(use-package ob-async)
+
 (defun rod/find-org-file ()
   "Find .org or .gpg files recursively from `org-directory'."
   (interactive)
