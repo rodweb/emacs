@@ -1,7 +1,9 @@
 (use-package magit
   :custom
   (vc-follow-symlinks t)
-  :commands (magit-status))
+  :commands (magit-status)
+  :config
+  (setq magit-process-finish-apply-ansi-colors t))
 
 (use-package forge
   :after magit)
@@ -11,7 +13,6 @@
   (:map forge-topic-mode-map
         ("C-c r" . code-review-forge-pr-at-point))
   :custom (code-review-auth-login-marker 'forge))
-
 
 (use-package diff-hl
   :defer 1
