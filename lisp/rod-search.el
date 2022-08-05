@@ -12,6 +12,9 @@
 	  "--type-not notest")
   :menu ("Custom" "n" "No tests"))
 
+(rg-define-toggle "-w" "w")
+(rg-define-toggle "--type-add 'notest:*.test.*' --type-not notest" "N")
+
 (use-package comb
   :hook ((comb-configure-mode comb-buffer-setup) . turn-off-evil-mode)
   :bind
