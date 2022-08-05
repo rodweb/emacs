@@ -3,7 +3,9 @@
   (vc-follow-symlinks t)
   :commands (magit-status)
   :config
-  (setq magit-process-finish-apply-ansi-colors t))
+  (setq magit-process-finish-apply-ansi-colors t)
+  (setq magit-clone-default-directory "~/dev") ;; TODO: use variable
+  (setq magit-clone-set-remote.pushDefault t))
 
 (use-package forge
   :after magit)
