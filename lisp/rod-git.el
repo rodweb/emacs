@@ -38,4 +38,8 @@
   :custom
   (git-link-use-commit t))
 
+(use-package clone
+  :straight (clone :host github :repo "rodweb/clone.el" :branch "main")
+  :commands (clone-repo))
+
 (provide 'rod-git)
