@@ -46,4 +46,5 @@
 (require 'rod-docker)
 (require 'rod-go)
 (require 'rod-flyspell)
+(require 'rod-email)
 (require 'rod-gupy nil t)
