@@ -22,6 +22,7 @@
   :custom
   (org-journal-dir "~/org/journal")
   (org-journal-encrypt-journal t)
+  (org-journal-file-type 'monthly)
   (org-journal-date-format "%F"))
 
 (use-package org-roam
