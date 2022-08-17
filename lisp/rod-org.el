@@ -1,11 +1,12 @@
 (use-package org
   :defer t
   :hook (org-capture-mode . evil-insert-state)
-  :init (setq org-directory "~/org")
+  :init
+  (setq org-directory "~/org")
   :bind (("C-M-<return>" . org-meta-return))
   :custom
   (org-imenu-depth 4)
-  (org-agenda-files '("~/org/inbox.org" "~/org/work.org"))
+  (org-agenda-files '("~/org/inbox.org" "~/org/work.org" "~/org/personal.gpg" "~/org/habits.gpg"))
   (org-archive-location "~/org/archive.org::datetree/* Finished Tasks")
   (org-crypt-key "rod.apd@gmail.com")
   (org-capture-templates '(("i" "Inbox" entry (file+headline "inbox.org" "Inbox") "** TODO %?")))
