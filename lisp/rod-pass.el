@@ -1,3 +1,5 @@
+(use-package pass :defer t)
+
 (use-package auth-source-pass
   :custom (auth-sources '(password-store)))
 
