@@ -40,4 +40,8 @@
   (let ((files (directory-files-recursively org-directory "\\.\\(org\\|gpg\\)$" nil)))
     (find-file (completing-read "Find file: " files))))
 
+(use-package todoist
+  :defer t
+  :config (setq todoist-token (password-store-get "todoist.com/token")))
+
 (provide 'rod-org)
