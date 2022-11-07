@@ -20,4 +20,8 @@
 (setq use-package-enable-imenu-support t)
 (straight-use-package 'use-package)
 
+(use-package default-text-scale
+  :defer 15
+  :config (default-text-scale-mode 1))
+
 (provide 'rod-bootstrap)
