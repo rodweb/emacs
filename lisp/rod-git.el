@@ -40,6 +40,9 @@
 
 (use-package clone
   :straight (clone :host github :repo "rodweb/clone.el" :branch "main")
-  :commands (clone-repo))
+  :commands (clone-repo)
+  :custom
+  (clone-protocol 'ssh)
+  (clone-directory "/Users/rod/dev"))
 
 (provide 'rod-git)
