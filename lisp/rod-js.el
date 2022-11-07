@@ -35,6 +35,7 @@
 
 (defun rod/setup-js ()
   (setq-local tab-width 2
+              js-indent-level 2
               javascript-indent-level 2
               typescript-indent-level 2))
 
