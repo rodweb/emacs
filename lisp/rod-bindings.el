@@ -88,6 +88,7 @@
     "/" 'rg-menu
     "a" 'projectile-toggle-between-implementation-and-test
     "b" 'consult-buffer
+    "B" 'magit-blame
     "c" (general-simulate-key "C-c")
     "d" 'kill-buffer-and-window
     "e" nil

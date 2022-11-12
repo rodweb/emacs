@@ -2,10 +2,17 @@
   :custom
   (vc-follow-symlinks t)
   :commands (magit-status)
+  :hook (magit-blame-mode . evil-emacs-state)
   :config
   (setq magit-process-finish-apply-ansi-colors t)
   (setq magit-clone-default-directory "~/dev") ;; TODO: use variable
   (setq magit-clone-set-remote.pushDefault t))
+
+(defun rod/magit-blame-quit ()
+  (when (not (bound-and-true-p magit-blame-mode))
+    (evil-normal-state)))
+
+(advice-add 'magit-blame-quit :after #'rod/magit-blame-quit)
 
 (use-package forge
   :after magit)
