@@ -47,4 +47,4 @@
 (require 'rod-go)
 (require 'rod-flyspell)
 (require 'rod-email)
-(require 'rod-gupy nil t)
+(require 'rod-mb nil t)
