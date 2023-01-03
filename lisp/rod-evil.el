@@ -18,6 +18,7 @@
   (evil-set-initial-state 'vterm-mode 'insert)
   (evil-set-initial-state 'prog-mode 'normal)
   (evil-set-initial-state 'text-mode 'normal)
+  (evil-set-initial-state 'conf-mode 'normal)
   (evil-set-initial-state 'fundamental-mode 'normal)
   (evil-set-initial-state 'compilation-mode 'emacs)
   (evil-set-initial-state 'ert-results-mode 'emacs)
