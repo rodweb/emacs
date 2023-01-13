@@ -22,6 +22,7 @@
 
 (use-package default-text-scale
   :defer 15
+  :custom (default-text-scale-amount 20)
   :config (default-text-scale-mode 1))
 
 (provide 'rod-bootstrap)
