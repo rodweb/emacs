@@ -22,6 +22,7 @@
   (typescript-mode . lsp-deferred)
   (rust-mode . lsp-deferred)
   (go-mode . lsp-deferred)
+  (js-mode . lsp-deferred)
   (lsp-mode . lsp-enable-which-key-integration)
   :custom
   (lsp-keymap-prefix "C-c l")
@@ -36,5 +37,12 @@
 
 (use-package consult-lsp
   :defer t)
+
+(use-package dap-mode
+  :after (lsp-mode)
+  :config
+  (dap-mode 1)
+  (require 'dap-node)
+  (dap-node-setup))
 
 (provide 'rod-lsp)
