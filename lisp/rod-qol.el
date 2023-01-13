@@ -37,8 +37,6 @@
 (use-package restart-emacs
   :commands restart-emacs)
 
-(use-package try :defer t)
-
 (defun rod/edit-emacs ()
   "Open init.el."
   (interactive)
