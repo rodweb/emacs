@@ -45,11 +45,17 @@
       (with-run-command targets working-dir "make ")))
   (add-to-list 'run-command-recipes #'run-command-recipe-make)
 
+  (defun run-command--get-terraform-script (main-tf-dir)
+    (let ((custom-tf-script-dir (locate-dominating-file default-directory "deploy")))
+      (if (string-equal main-tf-dir custom-tf-script-dir)
+          "./deploy "
+        "terraform ")))
+
   (defun run-command-recipe-terraform ()
     "Generate Terraform commands."
     (if-let ((working-dir (locate-dominating-file default-directory "main.tf"))
              (targets '("init" "fmt" "validate" "plan" "apply")))
-        (with-run-command targets working-dir "terraform ")))
+        (with-run-command targets working-dir (run-command--get-terraform-script working-dir))))
   (add-to-list 'run-command-recipes #'run-command-recipe-terraform)
 
   (defun run-command-recipe-docker-compose ()
@@ -74,6 +80,7 @@
       (ansi-color-apply-on-region compilation-filter-start (point-max))))
   (defun rod/notify-compilation-finished (buffer exit-string)
     "Notifies when the compilation has finished."
+    ;; TODO: not working on Mac
     (alert "compilation finished"
            :severity (if (string-prefix-p "exited abnormally" exit-string)
                          'high
