@@ -21,8 +21,6 @@
       (progn (prettier-js-mode +1)
              (setq-local prettier-js-command (concat dir "node_modules/.bin/prettier")))))
 
-(use-package indium :defer t)
-
 (add-to-list 'compilation-error-regexp-alist-alist
              '(javascript-stack-trace
                " (\\([^:]+\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\))"
