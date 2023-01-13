@@ -33,8 +33,9 @@
 (use-package embark
   :after vertico
   :bind
-  (("M-<return>" . embark-act)
-   ("C-h b" . embark-bindings))
+  (("C-h b" . embark-bindings)
+   (:map minibuffer-local-map
+         ("M-<return>" . embark-act)))
   :custom
   (prefix-help-command #'embark-prefix-help-command))
 
