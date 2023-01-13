@@ -1,15 +1,21 @@
-(defun rod/diff-new-buffers ()
+(defun rod/diff-buffers-create ()
   (interactive)
-  (dolist (b (list (get-buffer-create "A")
-                   (get-buffer-create "B")))
-    (with-current-buffer b
-      (json-mode))
-    (switch-to-buffer "A")
-    (switch-to-buffer-other-window "B")))
+  (let* ((bufa (get-buffer-create "A"))
+         (bufb (get-buffer-create "B")))
+    (ediff-buffers bufa bufb)))
 
-(defun rod/kill-diff-buffers ()
+(defun rod/diff-buffers-kill ()
   (interactive)
   (kill-buffer "A")
-  (kill-buffer "B"))
+  (kill-buffer "B")
+  (when (bound-and-true-p winner-mode)
+    (winner-undo)))
+
+(defun rod/disable-mode (mode-fn)
+  "Disable MODE-FN in all buffers."
+  (interactive "a")
+  (dolist (buffer (buffer-list))
+    (with-current-buffer buffer
+      (funcall mode-fn -1))))
 
 (provide 'rod-util)
