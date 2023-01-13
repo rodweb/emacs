@@ -32,8 +32,8 @@
   (interactive)
   (switch-to-buffer (other-buffer)))
 
-(defun rod/format-elisp-buffer ()
-  "Format an emacs-lisp-mode buffer."
+(defun rod/indent-buffer ()
+  "Indent whole buffer."
   (interactive)
   (untabify (point-min) (point-max))
   (delete-trailing-whitespace (point-min) (point-max))
@@ -44,8 +44,8 @@
   (interactive)
   (cond ((string-equal major-mode "json-mode") (json-mode-beautify (point-min) (point-max)))
         ((string-equal major-mode "sql-mode") (sqlformat-buffer))
-        ((string-equal major-mode "emacs-lisp-mode") (rod/format-elisp-buffer))
-        (t (lsp-format-buffer))))
+        ((bound-and-true-p lsp-mode) (lsp-format-buffer))
+        (t (rod/indent-buffer))))
 
 (defun rod/copy-filename ()
   "Copy `buffer-file-name'."
