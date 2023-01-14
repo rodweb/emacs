@@ -22,7 +22,7 @@
   (defun run-command-recipe-npm ()
     "Generate commands from package.json."
     (ignore-errors
-      (when-let* ((working-dir (locate-dominating-file default-directory ".git"))
+      (when-let* ((working-dir (locate-dominating-file default-directory "package.json"))
                   (package-json (concat working-dir "package.json"))
                   (targets (run-command-recipe-npm--get-targets package-json)))
         (with-run-command targets working-dir "npm run "))))
