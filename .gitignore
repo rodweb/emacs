@@ -24,3 +24,5 @@
 /request/
 /.cask/
 /custom.el
+/eln-cache/
+/.extension/
