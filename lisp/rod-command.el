@@ -67,6 +67,13 @@
         (with-run-command targets working-dir (run-command--get-terraform-script working-dir))))
   (add-to-list 'run-command-recipes #'run-command-recipe-terraform)
 
+  (defun run-command-recipe-podman ()
+    "Generate Pod commands."
+    (if-let ((working-dir (locate-dominating-file default-directory "Dockerfile"))
+             (targets '("machine start" "machine stop")))
+        (with-run-command targets working-dir "podman ")))
+  (add-to-list 'run-command-recipes #'run-command-recipe-podman)
+
   (defun run-command-recipe-docker-compose ()
     "Generate docker-compose commands."
     (when-let* ((working-dir (locate-dominating-file default-directory "docker-compose.yml"))
@@ -75,7 +82,6 @@
        (list :command-name "up detached"
              :command-line (concat prefix "up -d")
              :working-dir working-dir))))
-
   (add-to-list 'run-command-recipes #'run-command-recipe-docker-compose))
 
 (use-package alert :defer t)
