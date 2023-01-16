@@ -26,3 +26,4 @@
 /custom.el
 /eln-cache/
 /.extension/
+/.dap-breakpoints
