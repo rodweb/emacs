@@ -2,10 +2,6 @@
 (use-package yaml-mode :defer t)
 (use-package jq-mode :defer t)
 
-(use-package npm-mode
-  :straight (npm-mode :host github :repo "mojochao/npm-mode" :fork t)
-  :hook ((typescript-mode js-mode) . npm-mode))
-
 (use-package nvm
   :hook ((typescript-mode js-mode) . nvm-use-for-buffer))
 

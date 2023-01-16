@@ -4,10 +4,12 @@
   :config
   (defun with-run-command (targets working-dir command-prefix)
     (mapcar (lambda (target)
-              (list :command-name target
-                    :command-line (concat command-prefix target)
-                    :display target
-                    :working-dir working-dir))
+              (let ((command-name (if (consp target) (cdr target) target))
+                    (command-line (concat command-prefix (if (consp target) (car target) target))))
+                (list :command-name command-name
+                      :command-line command-line
+                      :display command-name
+                      :working-dir working-dir)))
             targets))
 
   (defun run-command-recipe-npm--get-targets (package-json-file)
@@ -20,13 +22,20 @@
           scripts))))
 
   (defun run-command-recipe-npm ()
+    "Generates commands for npm."
+    (when-let* ((working-dir (locate-dominating-file default-directory "package.json"))
+                (targets '("clean-install" "install" "install --force" "audit fix" "audit fix --force")))
+      (with-run-command targets working-dir "npm ")))
+  (add-to-list 'run-command-recipes #'run-command-recipe-npm)
+
+  (defun run-command-recipe-npm-scripts ()
     "Generate commands from package.json."
     (ignore-errors
       (when-let* ((working-dir (locate-dominating-file default-directory "package.json"))
                   (package-json (concat working-dir "package.json"))
                   (targets (run-command-recipe-npm--get-targets package-json)))
         (with-run-command targets working-dir "npm run "))))
-  (add-to-list 'run-command-recipes #'run-command-recipe-npm)
+  (add-to-list 'run-command-recipes #'run-command-recipe-npm-scripts)
 
   (defun run-command-recipe-makefile--get-targets (makefile)
     "Extract make targets from MAKEFILE."
