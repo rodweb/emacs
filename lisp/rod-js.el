@@ -1,6 +1,7 @@
 (use-package json-mode :defer t)
 (use-package yaml-mode :defer t)
 (use-package jq-mode :defer t)
+(use-package typescript-mode :defer t)
 
 (use-package nvm
   :hook ((typescript-mode js-mode) . nvm-use-for-buffer))
