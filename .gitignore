@@ -27,3 +27,4 @@
 /eln-cache/
 /.extension/
 /.dap-breakpoints
+/lisp/rod-messagebird.el

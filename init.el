@@ -43,4 +43,4 @@
 (require 'rod-go)
 (require 'rod-flyspell)
 (require 'rod-util)
-(require 'rod-mb nil t)
+(require 'rod-messagebird nil t)

@@ -1,6 +1,8 @@
 (use-package run-command
   :bind
   ("C-c c" . run-command)
+  :custom
+  (run-command-default-runner run-command-runner-compile)
   :config
   (defun with-run-command (targets working-dir command-prefix)
     (mapcar (lambda (target)
@@ -24,7 +26,7 @@
   (defun run-command-recipe-npm ()
     "Generates commands for npm."
     (when-let* ((working-dir (locate-dominating-file default-directory "package.json"))
-                (targets '("clean-install" "install" "install --force" "audit fix" "audit fix --force")))
+                (targets '("clean-install" "install" "install --force" "audit" "audit fix" "audit fix --force" "version patch" "publish")))
       (with-run-command targets working-dir "npm ")))
   (add-to-list 'run-command-recipes #'run-command-recipe-npm)
 
@@ -73,6 +75,19 @@
              (targets '("machine start" "machine stop")))
         (with-run-command targets working-dir "podman ")))
   (add-to-list 'run-command-recipes #'run-command-recipe-podman)
+
+  (defun run-command-recipe-lerna ()
+    "Generate Lerna commands"
+    (if-let ((working-dir (locate-dominating-file default-directory "lerna.json"))
+             (targets '("bootstrap")))
+        (with-run-command targets working-dir "lerna ")))
+  (add-to-list 'run-command-recipes #'run-command-recipe-lerna)
+
+  (defun run-command-recipe-json ()
+    "Generate JSON commands."
+    (when (eq major-mode 'json-mode)
+      nil))
+  (add-to-list 'run-command-recipes #'run-command-recipe-json)
 
   (defun run-command-recipe-docker-compose ()
     "Generate docker-compose commands."
