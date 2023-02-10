@@ -30,7 +30,7 @@
   :config (setq read-process-output-max (* 1024 1024)
                 lsp-headerline-breadcrumb-enable nil
                 lsp-enable-symbol-highlighting nil
-                lsp-restart 'auto-restart))
+                lsp-restart 'ignore))
 
 (use-package lsp-ui
   :after lsp-mode)
