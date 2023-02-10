@@ -1,5 +1,8 @@
 (use-package jenkinsfile-mode :defer t)
 (use-package markdown-mode :defer t)
+(use-package nginx-mode
+  :defer t)
+(add-to-list 'auto-mode-alist '("\\.j2\\'" . nginx-mode))
 
 (use-package ws-butler
   :defer t)
