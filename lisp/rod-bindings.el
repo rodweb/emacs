@@ -127,7 +127,7 @@
     "t" 'rgr-command-map
     "u" (general-simulate-key "C-x t")
     "v" (general-simulate-key "C-x 4")
-    "w" 'other-window
+    "w" 'ace-window
     "x" nil
     "y" nil
     "yg" 'git-link
