@@ -2,7 +2,7 @@
   :bind
   ("C-c c" . run-command)
   :custom
-  (run-command-default-runner run-command-runner-compile)
+  (run-command-default-runner 'run-command-runner-compile)
   :config
   (defun with-run-command (targets working-dir command-prefix)
     (mapcar (lambda (target)
