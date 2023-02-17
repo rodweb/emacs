@@ -3,6 +3,7 @@
 
 (use-package verb-env
   :straight (verb-env :host github :repo "rodweb/verb-env" :branch "main")
+  :custom (verb-env-default "tst")
   :hook (verb-mode . verb-env-mode))
 
 (use-package restclient :defer t)
