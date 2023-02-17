@@ -45,3 +45,4 @@
 (require 'rod-util)
 (require 'rod-messagebird nil t)
 (require 'rod-window)
+(require 'rod-help)
