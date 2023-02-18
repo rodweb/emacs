@@ -28,13 +28,22 @@
 (use-package org-roam
   :defer t
   :init (setq org-roam-v2-ack t)
-  :custom (org-roam-directory "~/org/roam/")
+  :hook ((org-mode . auto-fill-mode)
+         (org-capture-mode . auto-fill-mode))
+  :custom
+  (org-roam-directory "~/org/roam/")
+  (org-roam-capture-templates
+   '(("d" "default" plain "\n\n* ${title}\n\n%?" :target
+      (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+      :unnarrowed t)))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert))
   :config (org-roam-setup))
 
-(use-package ob-async)
+(use-package org-fc :after org)
+
+(use-package ob-async :after org)
 
 (defun rod/find-org-file ()
   "Find .org or .gpg files recursively from `org-directory'."
