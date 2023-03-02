@@ -7,4 +7,4 @@
 (use-package yasnippet-snippets
   :after yasnippet)
 
-(provide 'rod-snippet)
+(provide 'rod-yasnippet)
