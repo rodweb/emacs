@@ -28,7 +28,7 @@
   (:map minibuffer-local-map
 	("M-S-<return>" . marginalia-cycle))
   :config
-  (marginalia-mode))
+  (marginalia-mode 1))
 
 (use-package embark
   :after vertico
