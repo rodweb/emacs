@@ -3,6 +3,7 @@
   ((typescript-mode tsx-ts-mode) . eglot-ensure)
   :custom
   (eglot-confirm-server-initiated-edits nil)
+  :config
   (add-to-list 'eglot-server-programs `(tsx-ts-mode . ("typescript-language-server" "--stdio"))))
 
 (general-nmap
