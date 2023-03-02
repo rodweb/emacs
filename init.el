@@ -11,7 +11,7 @@
 (require 'rod-backup)
 (require 'rod-dired)
 (require 'rod-minibuffer)
-(require 'rod-completion)
+(require 'rod-corfu)
 (require 'rod-workspace)
 (require 'rod-search)
 (require 'rod-js)
