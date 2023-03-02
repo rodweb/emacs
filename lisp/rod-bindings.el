@@ -44,6 +44,7 @@
   (interactive)
   (cond ((string-equal major-mode "json-mode") (json-mode-beautify (point-min) (point-max)))
         ((string-equal major-mode "sql-mode") (sqlformat-buffer))
+        ((bound-and-true-p eglot-managed-mode) (eglot-format-buffer))
         ((bound-and-true-p lsp-mode) (lsp-format-buffer))
         (t (rod/indent-buffer))))
 
@@ -67,6 +68,7 @@
   "Rename symbol."
   (interactive)
   (cond ((bound-and-true-p tide-mode) (tide-rename-symbol))
+        ((bound-and-true-p eglot-managed-mode) (eglot-rename))
         ((bound-and-true-p lsp-mode) (call-interactively #'lsp-rename))
         (t (call-interactively #'rod/rename-symbol))))
 

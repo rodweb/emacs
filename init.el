@@ -19,7 +19,6 @@
 (require 'rod-prog)
 (require 'rod-profiling)
 (require 'rod-diff)
-(require 'rod-lsp)
 (require 'rod-service)
 (require 'rod-command)
 (require 'rod-org)
@@ -47,3 +46,4 @@
 (require 'rod-window)
 (require 'rod-help)
 (require 'rod-emmet)
+(require 'rod-eglot)
