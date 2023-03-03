@@ -155,8 +155,8 @@
     "[e" 'flymake-goto-prev-error
     "]l" 'next-error
     "[l" 'previous-error
-    "]h" 'git-gutter:next-hunk
-    "[h" 'git-gutter:previous-hunk))
+    "]g" 'git-gutter:next-hunk
+    "[g" 'git-gutter:previous-hunk))
 
 (add-hook 'after-init-hook #'rod/setup-bindings)
 
