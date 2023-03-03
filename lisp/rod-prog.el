@@ -22,6 +22,8 @@
 (use-package tree-sitter-langs
   :hook (tree-sitter-after-on . tree-sitter-hl-mode))
 
+(add-to-list 'major-mode-remap-alist '(js-mode . js-ts-mode))
+
 (use-package dumb-jump
   :defer 1
   :config
