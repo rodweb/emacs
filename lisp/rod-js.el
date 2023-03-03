@@ -4,7 +4,7 @@
 (use-package typescript-mode :defer t)
 
 (use-package nvm
-  :hook ((typescript-mode js-mode) . nvm-use-for-buffer))
+  :hook ((typescript-mode js-mode js-ts-mode tsx-ts-mode) . nvm-use-for-buffer))
 
 (use-package compile-eslint
   :straight (compile-eslint :host github :repo "Fuco1/compile-eslint")
@@ -35,6 +35,8 @@
               typescript-indent-level 2))
 
 (add-hook 'js-mode-hook #'rod/setup-js)
+(add-hook 'js-ts-mode-hook #'rod/setup-js)
 (add-hook 'typescript-mode-hook #'rod/setup-js)
+(add-hook 'tsx-ts-mode-hook #'rod/setup-js)
 
 (provide 'rod-js)
