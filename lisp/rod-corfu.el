@@ -3,10 +3,11 @@
   (completion-cycle-threshold 3)
   (read-extended-command-predicate #'command-completion-default-include-p)
   (tab-always-indent 'complete)
-  (completion-styles '(basic))
   (corfu-auto t)
   (corfu-cycle t)
   (corfu-preselect 'prompt)
+  (corfu-auto-prefix 1)
+  (corfu-quit-no-match nil)
   :bind
   (:map corfu-map
         ("TAB" . corfu-next)

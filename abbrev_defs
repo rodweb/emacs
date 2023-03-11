@@ -8,3 +8,6 @@
     ("applicaiton" "application" nil :count 0)
    ))
 
+;; Local Variables:
+;; mode: lisp-data
+;; End:
