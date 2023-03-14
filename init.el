@@ -47,3 +47,4 @@
 (require 'rod-help)
 (require 'rod-emmet)
 (require 'rod-eglot)
+(require 'rod-eshell)
