@@ -14,6 +14,10 @@
          (dired-mode . dired-omit-mode)
          (dired-mode . diff-hl-dired-mode)))
 
+(defun rod/dired-copy-path ()
+  (interactive)
+  (kill-new (dired-get-filename)))
+
 (use-package dired-hide-dotfiles
   :after dired
   :bind
