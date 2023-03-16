@@ -48,3 +48,4 @@
 (require 'rod-emmet)
 (require 'rod-eglot)
 (require 'rod-eshell)
+(require 'rod-server)
