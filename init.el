@@ -23,7 +23,7 @@
 (require 'rod-command)
 (require 'rod-org)
 (require 'rod-info)
-(require 'rod-yasnippet)
+(require 'rod-tempel)
 (require 'rod-modeline)
 (require 'rod-evil)
 (require 'rod-term)

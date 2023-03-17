@@ -1,0 +1,22 @@
+js-mode js-ts-mode typescript-mode tsx-ts-mode
+
+(it "it('" p "', " p "() => {" n> r> n "})")
+(describe "describe('" p "', " p "() => {" n> r> n"})")
+(for "for (" p "; " p "; " p ") {" n> r n "}")
+
+org-mode
+
+(src
+ "#+begin_src emacs-lisp"
+ q n> r> n
+ "#+end_src"
+ :post (progn (org-edit-src-code) (evil-insert-state)))
+
+emacs-lisp-mode
+
+(up "(use-package " p ")")
+(def "(defun " p "()" r> p")")
+
+;; Local Variables:
+;; mode: lisp-data
+;; End:
