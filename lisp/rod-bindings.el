@@ -68,7 +68,7 @@
   "Rename symbol."
   (interactive)
   (cond ((bound-and-true-p tide-mode) (tide-rename-symbol))
-        ((bound-and-true-p eglot--managed-mode) (eglot-rename))
+        ((bound-and-true-p eglot--managed-mode) (call-interactively #'eglot-rename))
         ((bound-and-true-p lsp-mode) (call-interactively #'lsp-rename))
         (t (call-interactively #'rod/rename-symbol))))
 
