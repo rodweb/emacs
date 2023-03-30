@@ -49,3 +49,4 @@
 (require 'rod-eglot)
 (require 'rod-eshell)
 (require 'rod-server)
+(require 'rod-copilot)
