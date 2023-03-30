@@ -4,10 +4,13 @@
   :custom
   (run-command-default-runner 'run-command-runner-compile)
   :config
-  (defun with-run-command (targets working-dir command-prefix)
+  (defun with-run-command (targets working-dir command-prefix &optional file)
     (mapcar (lambda (target)
-              (let ((command-name (if (consp target) (cdr target) target))
-                    (command-line (concat command-prefix (if (consp target) (car target) target))))
+              (let* ((command-name (if (consp target) (cdr target) target))
+                     (target (if (consp target) (car target) target))
+                     (command-line (concat
+                                    command-prefix
+                                    (if file (concat target " " (buffer-file-name)) target))))
                 (list :command-name command-name
                       :command-line command-line
                       :display command-name
@@ -68,6 +71,13 @@
              (targets '("init" "fmt" "validate" "plan" "apply")))
         (with-run-command targets working-dir (run-command--get-terraform-script working-dir))))
   (add-to-list 'run-command-recipes #'run-command-recipe-terraform)
+
+  (defun run-command-recipe-golang ()
+    "Generate Go commands."
+    (if-let ((working-dir (file-name-directory (buffer-file-name)))
+             (targets '("build" "test" "run" "fmt")))
+        (with-run-command targets working-dir "go " t)))
+  (add-to-list 'run-command-recipes #'run-command-recipe-golang)
 
   (defun run-command-recipe-podman ()
     "Generate Pod commands."
