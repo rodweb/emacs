@@ -17,4 +17,7 @@
   :init
   (global-corfu-mode))
 
+(use-package cape
+  :after corfu)
+
 (provide 'rod-corfu)
