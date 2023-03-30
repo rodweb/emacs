@@ -15,8 +15,12 @@
 
 (use-package tree-sitter
   :defer 1
-  :config (setq tree-sitter-debug-jump-buttons t
-                tree-sitter-debug-highlight-jump-region t)
+  :straight nil
+  :custom
+  (treesit-extra-load-path '("~/dev/tree-sitter-module/dist"))
+  :config
+  (setq tree-sitter-debug-jump-buttons t
+        tree-sitter-debug-highlight-jump-region t)
   (global-tree-sitter-mode))
 
 (use-package tree-sitter-langs
