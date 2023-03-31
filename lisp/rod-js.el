@@ -37,6 +37,7 @@
 (add-hook 'js-mode-hook #'rod/setup-js)
 (add-hook 'js-ts-mode-hook #'rod/setup-js)
 (add-hook 'typescript-mode-hook #'rod/setup-js)
+(add-hook 'typescript-ts-mode-hook #'rod/setup-js)
 (add-hook 'tsx-ts-mode-hook #'rod/setup-js)
 
 (provide 'rod-js)
