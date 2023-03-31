@@ -5,6 +5,7 @@
   (eglot-confirm-server-initiated-edits nil)
   :config
   (add-to-list 'eglot-server-programs `(tsx-ts-mode . ("typescript-language-server" "--stdio")))
+  (add-to-list 'eglot-server-programs `(typescript-ts-mode . ("typescript-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs `(go-ts-mode . ("gopls"))))
 
 (defun rod/eglot-capf ()
