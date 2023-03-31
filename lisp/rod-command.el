@@ -74,7 +74,7 @@
 
   (defun run-command-recipe-golang ()
     "Generate Go commands."
-    (if-let ((working-dir (file-name-directory (buffer-file-name)))
+    (if-let ((working-dir (and (s-ends-with? ".go" buffer-file-name) (file-name-directory (buffer-file-name))))
              (targets '("build" "test" "run" "fmt")))
         (with-run-command targets working-dir "go " t)))
   (add-to-list 'run-command-recipes #'run-command-recipe-golang)
