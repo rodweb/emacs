@@ -50,3 +50,4 @@
 (require 'rod-eshell)
 (require 'rod-server)
 (require 'rod-copilot)
+(require 'rod-lua)
