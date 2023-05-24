@@ -1142,3 +1142,9 @@ current buffer's, reload dir-locals."
 (require 'rod-chatgpt)
 (require 'rod-command)
 (require 'rod-messagebird nil t)
+
+;; Consider _ as part of a word
+(modify-syntax-entry ?_ "w")
+
+;; Do not consider = as part of a word
+(modify-syntax-entry ?= ".")
