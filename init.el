@@ -1,3 +1,5 @@
+(defvar native-comp-deferred-compilation-deny-list nil)
+
 (setq user-full-name "Rodrigo Campos"
       user-mail-address "rod.apd@gmail.com")
 ;; TODO: Put additional variables here or in a separate file
@@ -902,10 +904,6 @@ current buffer's, reload dir-locals."
 ;;   :hook (after-init . doom-modeline-mode)
 ;;   :custom (doom-modeline-height 30))
 
-(use-package mood-line
-  :straight (mood-line :host gitlab :repo "jessieh/mood-line")
-  :hook (after-init . mood-line-mode))
-
 ;; this is needed for general.el, I believe?
 (setq evil-want-keybinding nil)
 
@@ -1086,6 +1084,7 @@ current buffer's, reload dir-locals."
   :custom
   (eglot-confirm-server-initiated-edits nil)
   :config
+  (add-to-list 'eglot-server-programs `(clojure-mode . ("clojure-lsp" "listen")))
   (add-to-list 'eglot-server-programs `(tsx-ts-mode . ("typescript-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs `(typescript-ts-mode . ("typescript-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs `(go-ts-mode . ("gopls"))))
@@ -1135,6 +1134,8 @@ current buffer's, reload dir-locals."
   :bind (:map copilot-mode-map
               ("C-<return>" . copilot-accept-completion)))
 
+(use-package clojure-mode :defer t)
+(use-package cider :after clojure-mode)
 
 ;; TODO: move
 (use-package string-inflection)
