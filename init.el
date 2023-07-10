@@ -282,6 +282,13 @@ current buffer's, reload dir-locals."
   (let ((files (directory-files-recursively org-directory "\\.\\(org\\|gpg\\)$" nil)))
     (find-file (completing-read "Find file: " files))))
 
+(defun rod/eval-buffer ()
+  (interactive)
+  (case major-mode
+    (emacs-lisp-mode (eval-buffer))
+    (clojure-mode (cider-eval-buffer))
+    (t (error "Unsupported mode: %s" major-mode))))
+
 ;; define most of the keybindings
 (defun rod/setup-bindings ()
   "Setup custom bindings."
@@ -297,7 +304,7 @@ current buffer's, reload dir-locals."
     "c" (general-simulate-key "C-c")
     "d" 'kill-buffer-and-window
     "e" nil
-    "eb" 'eval-buffer
+    "eb" 'rod/eval-buffer
     "ee" 'rod/edit-emacs
     "ef" 'eval-defun
     "er" 'eval-region
