@@ -168,6 +168,14 @@
         ((bound-and-true-p lsp-mode) (lsp-format-buffer))
         (t (rod/indent-buffer))))
 
+(defun rod/kill-most-buffers ()
+  (interactive)
+  (dolist (buffer (buffer-list))
+    (unless (or (string= (buffer-name buffer) "*scratch*")
+                (string= (buffer-name buffer) "*Messages*"))
+      (kill-buffer buffer)))
+  (delete-other-windows))
+
 (defun rod/copy-filename ()
   "Copy `buffer-file-name'."
   (interactive)
