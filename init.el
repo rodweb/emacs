@@ -351,6 +351,7 @@ current buffer's, reload dir-locals."
     "zk" 'kubernetes-overview)
 
   (general-nmap
+    "K" 'eldoc-print-current-symbol-info
     ;; goto
     "ga" 'lsp-execute-code-action
     "gb" 'xref-pop-marker-stack
