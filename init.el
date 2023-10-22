@@ -1089,11 +1089,11 @@ current buffer's, reload dir-locals."
 ;; LSP client
 (use-package eglot
   :hook
-  ((typescript-mode tsx-ts-mode go-mode go-ts-mode) . eglot-ensure)
+  ((typescript-mode tsx-ts-mode go-mode go-ts-mode clojure-mode) . eglot-ensure)
   :custom
   (eglot-confirm-server-initiated-edits nil)
   :config
-  (add-to-list 'eglot-server-programs `(clojure-mode . ("clojure-lsp" "listen")))
+  (add-to-list 'eglot-server-programs `(clojure-mode . ("clojure-lsp")))
   (add-to-list 'eglot-server-programs `(tsx-ts-mode . ("typescript-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs `(typescript-ts-mode . ("typescript-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs `(go-ts-mode . ("gopls"))))
