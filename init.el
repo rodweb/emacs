@@ -608,6 +608,7 @@ current buffer's, reload dir-locals."
   (read-extended-command-predicate #'command-completion-default-include-p)
   (tab-always-indent 'complete)
   (corfu-auto t)
+  (corfu-auto-delay 1)
   (corfu-cycle t)
   (corfu-preselect 'prompt)
   (corfu-auto-prefix 1)
