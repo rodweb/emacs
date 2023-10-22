@@ -943,6 +943,7 @@ current buffer's, reload dir-locals."
   (evil-set-initial-state 'ert-results-mode 'emacs)
   (evil-set-initial-state 'help-mode 'emacs)
   (evil-set-initial-state 'Info-mode 'emacs)
+  (evil-set-initial-state 'cider-repl-mode 'emacs)
   (evil-mode))
 
 ;; port of vim-commentary
