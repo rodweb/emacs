@@ -371,6 +371,7 @@ current buffer's, reload dir-locals."
 
 ;; make sure to setup bindings after Emacs has started
 (add-hook 'after-init-hook #'rod/setup-bindings)
+(add-hook 'evil-mode-hook #'rod/setup-bindings)
 
 ;;; session management
 
