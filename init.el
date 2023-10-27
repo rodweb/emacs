@@ -297,6 +297,12 @@ current buffer's, reload dir-locals."
     (clojure-mode (cider-eval-buffer))
     (t (error "Unsupported mode: %s" major-mode))))
 
+(defun rod/goto-implementation ()
+  (interactive)
+  (cond ((bound-and-true-p eglot--managed-mode) (call-interactively #'eglot-find-implementation))
+        ((bound-and-true-p lsp-mode) (call-interactively #'lsp-find-implementation))
+        (t (xref-find-definitions (thing-at-point 'symbol)))))
+
 ;; define most of the keybindings
 (defun rod/setup-bindings ()
   "Setup custom bindings."
@@ -369,7 +375,7 @@ current buffer's, reload dir-locals."
     "gl" 'ace-link
     "go" 'lsp-organize-imports
     "gr" 'xref-find-references
-    "gI" 'lsp-find-implementation
+    "gI" 'rod/goto-implementation
     "]e" 'flymake-goto-next-error
     "[e" 'flymake-goto-prev-error
     "]l" 'next-error
