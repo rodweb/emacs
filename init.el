@@ -289,9 +289,9 @@ current buffer's, reload dir-locals."
 (defun rod/eval-buffer ()
   (interactive)
   (case major-mode
-    (emacs-lisp-mode (eval-buffer))
-    (clojure-mode (cider-eval-buffer))
-    (t (error "Unsupported mode: %s" major-mode))))
+        (emacs-lisp-mode (eval-buffer))
+        (clojure-mode (cider-eval-buffer))
+        (t (error "Unsupported mode: %s" major-mode))))
 
 (defun rod/goto-implementation ()
   (interactive)
