@@ -25,6 +25,8 @@
 
 ;; set a nice monospace font
 (set-frame-font "JetBrains Mono-13" nil t)
+(when (eq system-type 'darwin)
+  (set-face-attribute 'default nil :height 135))
 
 ;; set a nice dark theme
 (load-theme 'modus-vivendi)
