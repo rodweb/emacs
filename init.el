@@ -1,3 +1,8 @@
+(defconst rod/project-dir (expand-file-name "~/dev/"))
+(defconst rod/tmp-dir (expand-file-name "~/tmp/"))
+(defconst rod/backup-dir (concat rod/tmp-dir "emacs/backups/"))
+(defconst rod/ts-modules-dir (concat rod/project-dir "tree-sitter-module/dist/"))
+
 (defvar native-comp-deferred-compilation-deny-list nil)
 
 (add-to-list 'load-path (concat user-emacs-directory "lisp/"))
@@ -119,9 +124,6 @@
   :config
   (which-key-mode))
 
-;; TODO: Currently not in use. Remove?
-(use-package hydra :defer t)
-
 ;; record key frequency to optimize keybindings
 (use-package keyfreq
   :defer 1
@@ -141,9 +143,8 @@
   :states '(normal visual emacs)
   :keymaps 'override)
 
-;;; custom functions
 ;; TODO: Move custom functions to their own file
-
+;;; custom functions
 (defun rod/alternate-buffer ()
   "Switch to previous buffer."
   (interactive)
@@ -184,21 +185,16 @@
     filename))
 
 (defun rod/copy-directory ()
-  "Copy `buffer-file-name's directory."
+  "Copy `buffer-file-name's directory. If it's a dired buffer, copy `dired-current-directory's instead."
   (interactive)
-  (if-let ((filename (let ((inhibit-message t))
-                       (rod/copy-filename))))
-      (message (kill-new (url-file-directory filename)))))
-
-;; TODO: merge with the previous function
-(defun rod/dired-copy-directory ()
-  "Copy the current directory path in dired to the clipboard."
-  (interactive)
-  (when (eq major-mode 'dired-mode)
-    (let ((path (dired-current-directory)))
-      (when path
-        (message "Copied path to clipboard: %s" path)
-        (kill-new path)))))
+  (if (eq major-mode 'dired-mode)
+      (let ((path (dired-current-directory)))
+        (when path
+          (message "Copied path to clipboard: %s" path)
+          (kill-new path)))
+    (if-let ((filename (let ((inhibit-message t))
+                         (rod/copy-filename))))
+        (message (kill-new (url-file-directory filename))))))
 
 (defun rod/rename ()
   "Rename symbol."
@@ -410,7 +406,7 @@ current buffer's, reload dir-locals."
   :hook (magit-blame-mode . evil-emacs-state)
   :config
   (setq magit-process-finish-apply-ansi-colors t)
-  (setq magit-clone-default-directory "~/dev") ;; TODO: Use a variable
+  (setq magit-clone-default-directory rod/project-dir)
   (setq magit-clone-set-remote.pushDefault t))
 
 ;; little hack to make blame play nice with evil
@@ -420,17 +416,6 @@ current buffer's, reload dir-locals."
     (evil-normal-state)))
 ;; advice to make sure we return to normal state after quitting
 (advice-add 'magit-blame-quit :after #'rod/magit-blame-quit)
-
-;; TODO: Configure forge
-;; (use-package forge
-;;   :after magit)
-
-;; TODO: Configure code-review
-(use-package code-review
-  :bind
-  (:map forge-topic-mode-map
-        ("C-c r" . code-review-forge-pr-at-point))
-  :custom (code-review-auth-login-marker 'forge))
 
 ;; this is good for seeing what has changed
 (use-package diff-hl
@@ -463,7 +448,7 @@ current buffer's, reload dir-locals."
   :commands (clone-repo)
   :custom
   (clone-protocol 'ssh)
-  (clone-directory "/Users/rod/dev")) ;; TODO: Use a variable
+  (clone-directory rod/project-dir))
 
 ;;; qualify of life
 ;; ignore native compilation warnings
@@ -476,30 +461,13 @@ current buffer's, reload dir-locals."
 (load custom-file)
 
 ;; confirm with y/n instead of yes/no
-;; TODO: Simplify by not using use-package
-(use-package files
-  :straight nil
-  :custom
-  (confirm-kill-emacs #'y-or-n-p)
-  :config
-  (defalias 'yes-or-no-p #'y-or-n-p))
-
-;; utility function to restart Emacs
-(use-package restart-emacs
-  :commands restart-emacs)
+(defalias 'yes-or-no-p #'y-or-n-p)
+;; (setq confirm-kill-emacs #'y-or-n-p)
 
 ;;; backups
-
-;; TODO: Simplify by not using use-package
-;; TODO: Use a variable
-(use-package files
-  :straight nil
-  :init
-  (make-directory "~/tmp/emacs/backups" t)
-  :custom
-  (backup-by-copying t)
-  (backup-directory-alist
-   '(("." . "~/tmp/emacs/backups"))))
+(make-directory rod/backup-dir t)
+(setq backup-by-copying t)
+(setq backup-directory-alist (list (cons "." rod/backup-dir)))
 
 ;;; file management
 
@@ -543,7 +511,6 @@ current buffer's, reload dir-locals."
   (minibuffer-depth-indicate-mode)
   (vertico-mode))
 
-;; TODO: Why is this needed?
 (defun rod/use-orderless-in-minibuffer ()
   (setq-local completion-styles '(orderless)))
 
@@ -634,9 +601,7 @@ current buffer's, reload dir-locals."
   :init
   (global-corfu-mode))
 
-;; TODO: Why is this needed?
-(use-package cape
-  :after corfu)
+(use-package cape :after corfu)
 
 ;; vim-like tab management for multiple window configurations
 (use-package tab-bar
@@ -669,17 +634,6 @@ current buffer's, reload dir-locals."
 ;; custom toggle for ignoring test files
 (rg-define-toggle "--type-add 'notest:*.{test,spec}.*' --type-not notest" "N")
 
-;; search tool to verify every match
-;; TODO: Almost never used this. Remove?
-;; TODO: Integrate with ripgrep so it's more useful
-(use-package comb
-  :hook ((comb-configure-mode comb-buffer-setup) . turn-off-evil-mode)
-  :bind
-  (:map comb-keymap
-        ("r" . #'comb-reject-next)
-        ("a" . #'comb-approve-next))
-  :defer t)
-
 ;; enable JavaScript related modes
 (use-package json-mode :defer t)
 (use-package yaml-mode :defer t)
@@ -698,20 +652,19 @@ current buffer's, reload dir-locals."
 
 ;; prettier integration
 (use-package prettier-js
-  :hook ((typescript-mode js-mode) . enable-prettier))
+  :hook ((typescript-mode js-mode) . rod/maybe-enable-prettier))
 
-;; TODO: Add support for other configuration file names
-(defun enable-prettier ()
+(defun rod/maybe-enable-prettier ()
   "Enable `prettier-js-mode' if there is a configuration file for it."
-  (if-let ((dir (locate-dominating-file default-directory ".prettierrc.js")))
+  (if-let* ((files '(".prettierrc.js" ".prettierrc" "prettier.config.js"))
+            (dir (cl-some (lambda (file) (locate-dominating-file default-directory file)) files)))
       (progn (prettier-js-mode +1)
              (setq-local prettier-js-command (concat dir "node_modules/.bin/prettier")))))
 
 ;; custom compilation rule for JavaScript stack traces
-;; TODO: Search for an existing rule for this. This one might be causing false positives
 (add-to-list 'compilation-error-regexp-alist-alist
              '(javascript-stack-trace
-               " (\\([^:]+\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\))"
+               "at [^ ]+ (\\(.+?\\):\\([[:digit:]]+\\):\\([[:digit:]]+\\)"
                1 2 3 1))
 (add-to-list 'compilation-error-regexp-alist 'javascript-stack-trace)
 (add-to-list 'compilation-transform-file-match-alist
@@ -724,20 +677,19 @@ current buffer's, reload dir-locals."
               javascript-indent-level 2
               typescript-indent-level 2))
 
-;; TODO: Simplify code
-(add-hook 'js-mode-hook #'rod/setup-js)
-(add-hook 'js-ts-mode-hook #'rod/setup-js)
-(add-hook 'typescript-mode-hook #'rod/setup-js)
-(add-hook 'typescript-ts-mode-hook #'rod/setup-js)
-(add-hook 'tsx-ts-mode-hook #'rod/setup-js)
+(dolist (hook '(js-mode-hook
+                js-ts-mode-hook
+                typescript-mode-hook
+                typescript-ts-mode-hook
+                tsx-ts-mode-hook))
+  (add-hook hook #'rod/setup-js))
 
 ;; project management
-;; TODO: Use a variable
 (use-package projectile
   :defer 1
   :custom
   (projectile-generic-command "rg --files --hidden")
-  (projectile-project-search-path '("~/dev"))
+  (projectile-project-search-path (list rod/project-dir))
   (projectile-create-missing-test-files t)
   :config
   (projectile-mode))
@@ -746,9 +698,8 @@ current buffer's, reload dir-locals."
 (use-package jenkinsfile-mode :defer t)
 (use-package markdown-mode :defer t)
 
-;; TODO: Refactor auto-mode-alist to use-package
-(use-package nginx-mode :defer t)
-(add-to-list 'auto-mode-alist '("\\.j2\\'" . nginx-mode))
+(use-package nginx-mode
+  :mode "\\.j2\\'")
 
 ;; smart code format
 (use-package ws-butler
@@ -762,12 +713,11 @@ current buffer's, reload dir-locals."
   (editorconfig-trim-whitespaces-mode 'ws-butler-mode))
 
 ;; tree-sitter integration
-;; TODO: Use a variable
 (use-package tree-sitter
   :defer 1
   :straight nil
   :custom
-  (treesit-extra-load-path '("~/dev/tree-sitter-module/dist"))
+  (treesit-extra-load-path '(rod/ts-modules-dir))
   :config
   (setq tree-sitter-debug-jump-buttons t
         tree-sitter-debug-highlight-jump-region t)
@@ -781,10 +731,10 @@ current buffer's, reload dir-locals."
 ;; dumb jump to definition that actually works
 ;; TODO: Make it play nice with evil and eglot
 (use-package dumb-jump
-  :defer 1
+  :hook
+  (prog-mode . dumb-jump-mode)
   :config
-  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
-  (dumb-jump-mode 1))
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 ;; quickly run single file scripts (even for compiled languages)
 (use-package quickrun
@@ -809,10 +759,10 @@ current buffer's, reload dir-locals."
   :bind
   ("C-=" . er/expand-region))
 
-;; TODO: Is this working?
 (defun rod/show-trailing-whitespace-in-prog-mode ()
   "Show trailing whitespace in programming modes."
   (setq show-trailing-whitespace t))
+
 (add-hook 'prog-mode-hook #'rod/show-trailing-whitespace-in-prog-mode)
 
 (defun rod/setup-programming-defaults ()
@@ -897,14 +847,6 @@ current buffer's, reload dir-locals."
 (defun my/sleep (_ &rest _)
   (sleep-for 0 1))
 (advice-add 'org-roam-db-query :before #'my/sleep)
-
-;; flash cards
-;; TODO: Never used it. Remove?
-(use-package org-fc :after org)
-
-;; asynchronous code block execution
-;; TODO: Only works with Python I think. Remove?
-(use-package ob-async :after org)
 
 ;; snippet management
 (use-package yasnippet
@@ -993,11 +935,6 @@ current buffer's, reload dir-locals."
   :custom (verb-env-default "tst")
   :hook (verb-mode . verb-env-mode))
 
-;; simple alternative to verb-mode
-;; TODO: Remove
-(use-package restclient :defer t)
-
-;; TODO: Not in use. Remove?
 (defun rod/setup-verb-mode ()
   (org-babel-do-load-languages 'org-babel-load-languages
                                (append org-babel-load-languages
@@ -1032,12 +969,6 @@ current buffer's, reload dir-locals."
   (sqlformat-command 'pgformatter)
   (sqlformat-args '("-s2")))
 
-;; TODO: Keep all programming language modes together
-(use-package rust-mode :defer t)
-(use-package go-mode :defer t)
-(use-package terraform-mode :defer t)
-(use-package lua-mode :mode "\\.lua\\'") ;; TODO: Is mode needed?
-
 (use-package company-terraform
   :defer 1
   :init (company-terraform-init))
@@ -1046,16 +977,13 @@ current buffer's, reload dir-locals."
                                  (setq-local completion-at-point-functions
                                              (mapcar #'cape-company-to-capf
                                                      (list #'company-terraform)))))
-;; automatic encryption and decryption for org buffers
-;; TODO: Simplify by not using use-package
-(use-package epa
-  :straight nil
-  :config
-  (fset 'epg-wait-for-status 'ignore)
-  :custom
-  (epa-file-select-keys nil)
-  (epa-file-encrypt-to ("264F7C10AC662AE2"
-                        "2E0A40A7E26A8A64E057F36F8FC45538900F31F6")))
+
+;; automatic encryption and decryption for gpg buffers
+(setq epa-file-select-keys nil)
+(setq epa-file-encrypt-to '("264F7C10AC662AE2"
+                           "2E0A40A7E26A8A64E057F36F8FC45538900F31F6"))
+(fset 'epg-wait-for-status 'ignore)
+(epa-file-enable)
 
 ;; k8s integration
 (use-package kubernetes
@@ -1064,10 +992,10 @@ current buffer's, reload dir-locals."
   (kubernetes-poll-frequency 3600)
   (kubernetes-redraw-frequency 3600))
 
-(use-package dockerfile-mode :defer t)
 ;; docker integration
 (use-package docker
   :commands (docker))
+(use-package dockerfile-mode :defer t)
 
 ;; spell checker
 (use-package flyspell
@@ -1147,16 +1075,17 @@ current buffer's, reload dir-locals."
   :bind (:map copilot-mode-map
               ("C-<return>" . copilot-accept-completion)))
 
+(require 'rod-command)
+
+;;; other programming languages
+(use-package rust-mode :defer t)
+(use-package go-mode :defer t)
+(use-package terraform-mode :defer t)
+(use-package lua-mode :defer t)
+
 ;; Clojure
 (use-package clojure-mode :defer t)
 (use-package cider :after clojure-mode)
-
-;; TODO: move and document
-(use-package string-inflection)
-
-(require 'rod-chatgpt)
-(require 'rod-command)
-(require 'rod-messagebird nil t)
 
 ;;; misc
 
@@ -1165,3 +1094,5 @@ current buffer's, reload dir-locals."
 
 ;; Do not consider = as part of a word
 (modify-syntax-entry ?= ".")
+
+(require 'rod-messagebird nil t)
