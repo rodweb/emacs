@@ -1,9 +1,5 @@
 (defvar native-comp-deferred-compilation-deny-list nil)
 
-(setq user-full-name "Rodrigo Campos"
-      user-mail-address "rod.apd@gmail.com")
-;; TODO: Put additional variables here or in a separate file
-
 (add-to-list 'load-path (concat user-emacs-directory "lisp/"))
 
 ;;; user interface
