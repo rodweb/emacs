@@ -831,10 +831,6 @@ current buffer's, reload dir-locals."
   (global-set-key [remap dabbrev-expand] #'hippie-expand))
 (add-hook 'after-init-hook #'rod/setup-programming-defaults)
 
-;; profile Emacs startup in background
-;; TODO: Never used it. Remove?
-(use-package esup)
-
 ;; diff tool
 (use-package ediff
   :straight nil
