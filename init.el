@@ -1133,19 +1133,10 @@ current buffer's, reload dir-locals."
 ;; consult integration for eglot
 (use-package consult-eglot :after eglot)
 
-;; TODO: Move elsewhere
-(defvar rod/nvm-dir "~/.nvm")
-
-(use-package eshell
+;; enable server mode if not running already
+(use-package server
   :straight nil
-  :hook (eshell-mode . rod/eshell-setup-aliases))
-
-;; TODO: Find a better way to do this. Cannot receive arguments this way.
-(defun rod/eshell-setup-aliases ()
-  (eshell/alias "node" (concat rod/nvm-dir "/nvm-exec node")))
-
-;; enable server mode
-;; (server-start)
+  :hook (after-init . server-mode))
 
 ;; GitHub copilot
 ;; TODO: Use a variable
@@ -1156,15 +1147,18 @@ current buffer's, reload dir-locals."
   :bind (:map copilot-mode-map
               ("C-<return>" . copilot-accept-completion)))
 
+;; Clojure
 (use-package clojure-mode :defer t)
 (use-package cider :after clojure-mode)
 
-;; TODO: move
+;; TODO: move and document
 (use-package string-inflection)
 
 (require 'rod-chatgpt)
 (require 'rod-command)
 (require 'rod-messagebird nil t)
+
+;;; misc
 
 ;; Consider _ as part of a word
 (modify-syntax-entry ?_ "w")
