@@ -1048,9 +1048,12 @@ current buffer's, reload dir-locals."
 ;; TODO: Simplify by not using use-package
 (use-package epa
   :straight nil
+  :config
+  (fset 'epg-wait-for-status 'ignore)
   :custom
   (epa-file-select-keys nil)
-  (epa-file-encrypt-to "264F7C10AC662AE2"))
+  (epa-file-encrypt-to ("264F7C10AC662AE2"
+                        "2E0A40A7E26A8A64E057F36F8FC45538900F31F6")))
 
 ;; k8s integration
 (use-package kubernetes
