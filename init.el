@@ -474,7 +474,9 @@ current buffer's, reload dir-locals."
 ;; the best file manager out there
 (use-package dired
   :straight nil
-  :custom (dired-clean-confirm-killing-deleted-buffers nil)
+  :custom
+  (dired-clean-confirm-killing-deleted-buffers nil)
+  (dired-dwim-target t)
   :commands (dired dired-jump)
   :init (put 'dired-find-alternate-file 'disabled nil)
   :bind
