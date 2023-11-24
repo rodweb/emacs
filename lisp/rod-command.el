@@ -101,14 +101,27 @@
 
   (defun run-command-recipe-sh ()
     "Generate shell commands."
-    (when-let* ((script-path (and (eq major-mode 'sh-mode)
+    (when-let* ((file-path (and (eq major-mode 'sh-mode)
                                   buffer-file-name))
-                (working-dir (locate-dominating-file default-directory script-path)))
+                (working-dir (locate-dominating-file default-directory file-path)))
       (list
        (list :command-name "run"
-             :command-line (concat  "/usr/bin/env bash " script-path)
+             :command-line (concat  "/usr/bin/env bash " file-path)
              :working-dir working-dir))))
   (add-to-list 'run-command-recipes #'run-command-recipe-sh)
+
+  (defun run-command-recipe-node ()
+    "Generate Node commands."
+    (when-let* ((file-path (and (or (eq major-mode 'js-mode)
+                                    (eq major-mode 'typescript-mode))
+                                buffer-file-name))
+                (working-dir (locate-dominating-file default-directory file-path))
+                (prefix (if (eq major-mode 'js-mode) "node" "ts-node")))
+      (list
+       (list :command-name "run"
+             :command-line (concat prefix " " file-path)
+             :working-dir working-dir))))
+  (add-to-list 'run-command-recipes #'run-command-recipe-node)
 
   (defun run-command-recipe-docker-compose ()
     "Generate docker-compose commands."
