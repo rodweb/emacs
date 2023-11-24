@@ -1098,3 +1098,10 @@ current buffer's, reload dir-locals."
 (modify-syntax-entry ?= ".")
 
 (require 'rod-messagebird nil t)
+
+;; set frame title to buffer name
+(setq frame-title-format
+      '(:eval
+        (if (buffer-file-name)
+            (abbreviate-file-name (buffer-file-name))
+          "%b")))
