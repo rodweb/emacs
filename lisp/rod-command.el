@@ -99,6 +99,17 @@
       nil))
   (add-to-list 'run-command-recipes #'run-command-recipe-json)
 
+  (defun run-command-recipe-sh ()
+    "Generate shell commands."
+    (when-let* ((script-path (and (eq major-mode 'sh-mode)
+                                  buffer-file-name))
+                (working-dir (locate-dominating-file default-directory script-path)))
+      (list
+       (list :command-name "run"
+             :command-line (concat  "/usr/bin/env bash " script-path)
+             :working-dir working-dir))))
+  (add-to-list 'run-command-recipes #'run-command-recipe-sh)
+
   (defun run-command-recipe-docker-compose ()
     "Generate docker-compose commands."
     (when-let* ((working-dir (locate-dominating-file default-directory "docker-compose.yml"))
