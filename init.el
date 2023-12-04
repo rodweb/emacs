@@ -634,7 +634,7 @@ current buffer's, reload dir-locals."
 ;; custom toggle for word wrap
 (rg-define-toggle "-w" "w")
 ;; custom toggle for ignoring test files
-(rg-define-toggle "--type-add 'notest:*.{test,spec}.*' --type-not notest" "N")
+(rg-define-toggle "--type-add 'testfiles:*.{test,spec}.{js,ts}' --type-add 'testfiles:*_test.go' --type-not testfiles" "N")
 
 ;; enable JavaScript related modes
 (use-package json-mode :defer t)
