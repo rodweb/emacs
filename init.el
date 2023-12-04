@@ -890,6 +890,7 @@ current buffer's, reload dir-locals."
   (evil-set-initial-state 'prog-mode 'normal)
   (evil-set-initial-state 'text-mode 'normal)
   (evil-set-initial-state 'conf-mode 'normal)
+  (evil-set-initial-state 'go-dot-mod-mode 'normal)
   (evil-set-initial-state 'fundamental-mode 'normal)
   (evil-set-initial-state 'compilation-mode 'emacs)
   (evil-set-initial-state 'ert-results-mode 'emacs)
