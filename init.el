@@ -482,6 +482,7 @@ current buffer's, reload dir-locals."
   :bind
   (:map dired-mode-map
         ("-" . #'dired-up-directory)
+        ("+" . #'dired-create-empty-file)
         ("C-c C-q" . #'wdired-change-to-wdired-mode)
         ("<return>" . #'dired-find-alternate-file))
   :general
