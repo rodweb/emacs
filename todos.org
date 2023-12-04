@@ -1,0 +1,85 @@
+* Basic
+
+** TODO Add this to GitHub
+
+* Bookmarking
+
+** TODO Annotate important places in the code, without polluting bookmark list
+
+** TODO Show bookmarks on =projectile-find-file=
+
+* Code navigation
+
+** TODO Ignore the first result when consulting references with =xref=
+
+The first result is the symbol I'm currently searching from. I
+don't need it to show up.
+
+** TODO Show a completing read list for recent edit locations =g;=
+
+* Debugging
+
+** TODO Debug existing test =golang=
+
+* Git
+
+** TODO Add option to copy =github= URL from default branch
+
+Currently, a =permalink= is generated. I'd like a basic URL to =github=
+in the default branch
+
+** TODO Open file in GitHub web app
+
+* Golang
+
+** TODO Install a Golang dependency ~go get~
+
+* Spell checking and dictionary
+
+** TODO Create function to word at-point to personal dictionary
+
+** TODO Make sure personal dictionary is tracked in Git
+
+* Search and replace
+
+** TODO Add UI hint when =word= search is enabled
+
+** TODO Allow searching ignoring just some patterns (e.g. =.git= directories)
+
+I want to search across a mono repository that ignores cloned stuff.
+I want to ignore noisy stuff but still be able to search across
+projects from different repositories in the same root directory.
+
+** DONE Fix searching for =non= test files (including =*_test.go=)
+
+** TODO Find a way to filter results incrementally
+
+Let's say I start with the search term =Message=, then I see lots of
+results for =MessageDeprected=. I want to ignore matches for =MessageDeprecated=.
+
+** TODO Remove matches from search results
+
+Sometimes I want to manually remove some results from the search
+
+** TODO Automatically save =rg= results based on the query
+
+** DONE Add an easy way to filter by file type (e.g.: =\*.proto=)
+
+Just type =f= to select the file type
+
+** TODO Find a way to avoid having to escape =*= (e.g.: =\*.proto=)
+
+* Testing
+
+** TODO Toggle between test and implementation in Golang
+
+* Brainstorm
+
+** Context management
+
+If I'm working in a work project during the day, I'd like to have a
+separate context for working in personal projects at night.
+
+Requirements:
+- Separate buffer list per context
+- Restore session for multiple contexts
