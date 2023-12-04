@@ -1107,3 +1107,6 @@ current buffer's, reload dir-locals."
         (if (buffer-file-name)
             (abbreviate-file-name (buffer-file-name))
           "%b")))
+
+;; add recompile binding
+(global-set-key (kbd "M-g r") 'recompile)
