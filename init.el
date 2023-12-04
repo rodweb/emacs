@@ -1082,6 +1082,7 @@ current buffer's, reload dir-locals."
 ;;; other programming languages
 (use-package rust-mode :defer t)
 (use-package go-mode :defer t)
+(use-package protobuf-mode :defer t)
 (use-package terraform-mode :defer t)
 (use-package lua-mode :defer t)
 
