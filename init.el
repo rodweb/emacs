@@ -124,6 +124,7 @@
   :config
   (which-key-mode))
 
+;; TODO: Save data and deprecate?
 ;; record key frequency to optimize keybindings
 (use-package keyfreq
   :defer 1
@@ -287,9 +288,9 @@ current buffer's, reload dir-locals."
 (defun rod/eval-buffer ()
   (interactive)
   (case major-mode
-    (emacs-lisp-mode (eval-buffer))
-    (clojure-mode (cider-eval-buffer))
-    (t (error "Unsupported mode: %s" major-mode))))
+        (emacs-lisp-mode (eval-buffer))
+        (clojure-mode (cider-eval-buffer))
+        (t (error "Unsupported mode: %s" major-mode))))
 
 (defun rod/goto-implementation ()
   (interactive)
@@ -532,8 +533,13 @@ current buffer's, reload dir-locals."
   :after vertico
   :bind
   (:map minibuffer-local-map
-        ("M-S-<return>" . marginalia-cycle))
+        ("M-a" . marginalia-cycle))
   :config
+  (advice-add #'marginalia-cycle :after
+              (lambda ()
+                (let ((inhibit-message t))
+                  (customize-save-variable 'marginalia-annotator-registry
+                                           marginalia-annotator-registry))))
   (marginalia-mode 1))
 
 ;; contextual actions in the minibuffer
@@ -628,8 +634,8 @@ current buffer's, reload dir-locals."
   :format regexp
   :dir project
   :files "all"
-  :flags ("--type-add 'notest:*.{test,spec}.*'"
-          "--type-not notest")
+  :flags ("--type-add 'testfiles:*.test.js,*.spec.js,*.test.ts,*.spec.ts,*_test.go'"
+          "--type-not testfiles")
   :menu ("Custom" "n" "No tests"))
 
 ;; custom toggle for word wrap
