@@ -287,9 +287,9 @@ current buffer's, reload dir-locals."
 (defun rod/eval-buffer ()
   (interactive)
   (case major-mode
-        (emacs-lisp-mode (eval-buffer))
-        (clojure-mode (cider-eval-buffer))
-        (t (error "Unsupported mode: %s" major-mode))))
+    (emacs-lisp-mode (eval-buffer))
+    (clojure-mode (cider-eval-buffer))
+    (t (error "Unsupported mode: %s" major-mode))))
 
 (defun rod/goto-implementation ()
   (interactive)
@@ -984,9 +984,9 @@ current buffer's, reload dir-locals."
 ;; automatic encryption and decryption for gpg buffers
 (setq epa-file-select-keys nil)
 (setq epa-file-encrypt-to '("264F7C10AC662AE2"
-                           "2E0A40A7E26A8A64E057F36F8FC45538900F31F6"))
-(fset 'epg-wait-for-status 'ignore)
+                            "2E0A40A7E26A8A64E057F36F8FC45538900F31F6"))
 (epa-file-enable)
+(fset 'epg-wait-for-status 'ignore)
 
 ;; k8s integration
 (use-package kubernetes
