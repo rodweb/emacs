@@ -540,6 +540,7 @@ current buffer's, reload dir-locals."
                 (let ((inhibit-message t))
                   (customize-save-variable 'marginalia-annotator-registry
                                            marginalia-annotator-registry))))
+  (add-to-list 'marginalia-command-categories '(projectile-find-file . file))
   (marginalia-mode 1))
 
 ;; contextual actions in the minibuffer
