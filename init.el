@@ -1092,6 +1092,7 @@ current buffer's, reload dir-locals."
 (use-package rust-mode :defer t)
 (use-package go-mode :defer t)
 (use-package protobuf-mode :defer t)
+(use-package gotest :after go-mode)
 (use-package terraform-mode :defer t)
 (use-package lua-mode :defer t)
 
