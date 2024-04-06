@@ -74,9 +74,23 @@
 
   (defun run-command-recipe-golang ()
     "Generate Go commands."
-    (if-let ((working-dir (and (s-ends-with? ".go" buffer-file-name) (file-name-directory (buffer-file-name))))
-             (targets '("build" "test" "run" "fmt")))
-        (with-run-command targets working-dir "go " t)))
+    (append
+     (if-let ((working-dir (locate-dominating-file default-directory "go.mod"))
+              (targets '("mod tidy" "mod vendor" "mod download")))
+         (with-run-command targets working-dir "go ")
+       (if-let ((working-dir (and (s-ends-with? ".go" buffer-file-name) (file-name-directory (buffer-file-name))))
+                (targets '("build" "test" "run" "fmt")))
+           (with-run-command targets working-dir "go " t)))
+    ;;; Check for cmd/**/main.go files, and make run commands
+     (when-let* ((working-dir (locate-dominating-file default-directory "go.mod"))
+                 (main-files (directory-files-recursively (concat working-dir "cmd") "main.go")))
+       (mapcar (lambda (main-file)
+                 (let ((command-name (concat "run " (car (last (split-string (file-name-directory main-file) "/") 2)))))
+                   (list :command-name command-name
+                         :command-line (concat "go run " main-file)
+                         :working-dir working-dir)))
+               main-files)))
+    )
   (add-to-list 'run-command-recipes #'run-command-recipe-golang)
 
   (defun run-command-recipe-podman ()
@@ -102,7 +116,7 @@
   (defun run-command-recipe-sh ()
     "Generate shell commands."
     (when-let* ((file-path (and (eq major-mode 'sh-mode)
-                                  buffer-file-name))
+                                buffer-file-name))
                 (working-dir (locate-dominating-file default-directory file-path)))
       (list
        (list :command-name "run"
