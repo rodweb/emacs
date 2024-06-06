@@ -1122,3 +1122,8 @@ current buffer's, reload dir-locals."
 
 ;; add recompile binding
 (global-set-key (kbd "M-g r") 'recompile)
+
+(use-package hurl-mode
+  :straight (hurl-mode :type git :host github :repo "jaszhe/hurl-mode")
+  :hook (hurl-mode . (lambda () (flyspell-mode -1)))
+  :mode ("\\.hurl\\'" . hurl-mode))
