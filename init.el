@@ -410,6 +410,8 @@ current buffer's, reload dir-locals."
   (setq magit-clone-default-directory rod/project-dir)
   (setq magit-clone-set-remote.pushDefault t))
 
+(use-package git-modes)
+
 ;; little hack to make blame play nice with evil
 (defun rod/magit-blame-quit ()
   "Return to normal state after quitting `magit-blame-mode'."
