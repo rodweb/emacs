@@ -709,6 +709,7 @@ current buffer's, reload dir-locals."
 ;; add syntax highlighting for more languages
 (use-package jenkinsfile-mode :defer t)
 (use-package markdown-mode :defer t)
+(use-package php-mode :defer t)
 
 (use-package nginx-mode
   :mode "\\.j2\\'")
