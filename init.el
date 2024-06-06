@@ -1099,6 +1099,12 @@ current buffer's, reload dir-locals."
 (use-package terraform-mode :defer t)
 (use-package lua-mode :defer t)
 
+;; Golang
+(use-package flycheck-golangci-lint
+  :hook (go-mode . flycheck-golangci-lint-setup))
+(use-package gotest
+  :after go-mode)
+
 ;; Clojure
 (use-package clojure-mode :defer t)
 (use-package cider :after clojure-mode)
