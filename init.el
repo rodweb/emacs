@@ -637,14 +637,14 @@ current buffer's, reload dir-locals."
   :format regexp
   :dir project
   :files "all"
-  :flags ("--type-add 'testfiles:*.test.js,*.spec.js,*.test.ts,*.spec.ts,*_test.go'"
-          "--type-not testfiles")
+  :flags ("--glob '!*.(spec|test).(js|ts|tsx|jsx)'"
+          "--glob '!*_test.go'")
   :menu ("Custom" "n" "No tests"))
 
 ;; custom toggle for word wrap
 (rg-define-toggle "-w" "w")
 ;; custom toggle for ignoring test files
-(rg-define-toggle "--type-add 'testfiles:*.{test,spec}.{js,ts}' --type-add 'testfiles:*_test.go' --type-not testfiles" "N")
+(rg-define-toggle "--glob '!*.(spec|test).(js|ts|tsx|jsx)' --glob '!*_test.go'" "N")
 
 ;; enable JavaScript related modes
 (use-package json-mode :defer t)
