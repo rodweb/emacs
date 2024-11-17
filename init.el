@@ -124,20 +124,6 @@
   :config
   (which-key-mode))
 
-;; TODO: Save data and deprecate?
-;; record key frequency to optimize keybindings
-(use-package keyfreq
-  :defer 1
-  :config
-  (keyfreq-mode 1)
-  (keyfreq-autosave-mode 1)
-  (setq keyfreq-excluded-commands '(self-insert-command
-                                    org-self-insert-command
-                                    vterm--self-insert
-                                    mwheel-scroll
-                                    lsp-ui-doc--handle-mouse-movement
-                                    ignore)))
-
 ;; define space as leader key
 (general-create-definer leader-def
   :prefix "SPC"
@@ -173,7 +159,7 @@
   (dolist (buffer (buffer-list))
     (unless (or (string= (buffer-name buffer) "*scratch*")
                 (string= (buffer-name buffer) "*Messages*"))
-      (kill-buffer buffer)))
+      (kill-current-buffer buffer)))
   (delete-other-windows))
 
 (defun rod/copy-filename ()
@@ -324,7 +310,7 @@ current buffer's, reload dir-locals."
     "h" 'consult-recent-file
     "i" 'consult-imenu
     "j" 'avy-goto-char-timer
-    "k" 'kill-this-buffer
+    "k" 'kill-current-buffer
     "l" 'consult-line
     "L" 'magit-log-buffer-file
     "m" nil
@@ -1058,7 +1044,7 @@ current buffer's, reload dir-locals."
 ;; eglot and corfu integration through cape
 (defun rod/eglot-capf ()
   (setq-local completion-at-point-functions
-              (list (cape-super-capf
+              (list (cape-capf-super
                      #'eglot-completion-at-point
                      #'cape-file))))
 
@@ -1086,7 +1072,7 @@ current buffer's, reload dir-locals."
 ;; TODO: Use a variable
 (use-package copilot
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
-  :custom (copilot-node-executable "~/.nvm/versions/node/v16.19.0/bin/node")
+  :custom (copilot-node-executable "~/.nvm/versions/node/v22.11.0/bin/node")
   :hook (prog-mode . copilot-mode)
   :bind (:map copilot-mode-map
               ("C-<return>" . copilot-accept-completion)))
@@ -1118,8 +1104,6 @@ current buffer's, reload dir-locals."
 
 ;; Do not consider = as part of a word
 (modify-syntax-entry ?= ".")
-
-(require 'rod-messagebird nil t)
 
 ;; set frame title to buffer name
 (setq frame-title-format
